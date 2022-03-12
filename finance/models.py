@@ -48,3 +48,35 @@ IBAN : EG 250003064331713310273010110""")
 		return self.item_name +' '+"invoice"
 
 
+############################################### xpenses category  ##############################
+class expenses_category  (models.Model):
+	category_name = models.CharField(max_length=255)
+	alarm_ammount = models.FloatField()
+	class Meta:
+		verbose_name_plural = 'expeses categories'
+	def __str__(self):
+		return self.category_name
+
+
+############################################### payment orders ##############################
+class expenses (models.Model):
+	category = models.ForeignKey(expenses_category,related_name='expenses_category',on_delete=models.CASCADE)
+	ammount = models.FloatField()
+	description = models.TextField()
+	function = models.TextField()
+	date = models.DateField(auto_now_add=True)
+	class Meta:
+		verbose_name_plural = 'Expeses'
+	def __str__(self):
+		return self.category.category_name + ' '+ 'expeses'+' '+str(self.date)
+
+############################################### payment orders ##############################
+class loader_expenses (models.Model):
+	ammount = models.FloatField()
+	load = models.BooleanField(default = False)
+	unload = models.BooleanField(default = False)
+	date = models.DateField(auto_now_add=True)
+	class Meta:
+		verbose_name_plural = 'Loader Expeses'
+	def __str__(self):
+		return 'loader expese'+' '+str(self.date)

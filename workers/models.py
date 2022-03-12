@@ -1,6 +1,6 @@
 from django.db import models
 from shifts.models import shift_types_table
-from django.contrib.postgres.fields import ArrayField
+# from django.contrib.postgres.fields import ArrayField
 
 
 class drivers (models.Model):
@@ -29,7 +29,7 @@ class workers (models.Model):
 	deduction = models.FloatField(null = True , blank = True)
 	last_payment_date = models.DateField(null = True , blank = True)
 	upcoming_payment_date = models.DateField(null = True , blank = True)
-	shifts = ArrayField(ArrayField(models.CharField(max_length= 255)))
+	# shifts = ArrayField(ArrayField(models.CharField(max_length= 255)))
 	shift_type = models.ForeignKey(shift_types_table,related_name='shift_types',on_delete=models.CASCADE)
 	class Meta:
 		verbose_name_plural = 'workers'

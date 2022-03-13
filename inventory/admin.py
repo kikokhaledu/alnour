@@ -1,4 +1,6 @@
 from django.contrib import admin
-from . models import clients_table
+from . models import raw_material,finished_products,batch
 # Register your models here.
-admin.site.register(clients_table)
+admin.site.register(raw_material)
+admin.site.register(finished_products)
+admin.site.register(batch)

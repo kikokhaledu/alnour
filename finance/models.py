@@ -61,10 +61,10 @@ class expenses_category  (models.Model):
 ############################################### payment orders ##############################
 class expenses (models.Model):
 	category = models.ForeignKey(expenses_category,related_name='expenses_category',on_delete=models.CASCADE)
-	ammount = models.FloatField()
-	description = models.TextField()
-	function = models.TextField()
-	date = models.DateField(auto_now_add=True)
+	ammount = models.FloatField(null = True , blank = True)
+	description = models.TextField(null = True , blank = True)
+	function = models.TextField(null = True , blank = True)
+	date = models.DateField(auto_now_add=True,editable=True)
 	class Meta:
 		verbose_name_plural = 'Expeses'
 	def __str__(self):

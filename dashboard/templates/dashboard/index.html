@@ -10,7 +10,7 @@
     <meta name="description" content="Vuexy admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
     <meta name="keywords" content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="PIXINVENT">
-    <title>Dashboard ecommerce - Vuexy - Bootstrap HTML admin template</title>
+    <title>Al Nour Rubber</title>
     <link rel="apple-touch-icon" href="{%static 'app-assets/images/ico/apple-icon-120.png'%}">
     <link rel="shortcut icon" type="image/x-icon" href="{%static 'app-assets/images/ico/favicon.ico'%}">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600" rel="stylesheet">
@@ -65,86 +65,31 @@
             </div>
             <ul class="nav navbar-nav align-items-center ms-auto">
                 <li class="nav-item d-none d-lg-block"><a class="nav-link nav-link-style"><i class="ficon" data-feather="moon"></i></a></li>
-                <li class="nav-item dropdown dropdown-notification me-25"><a class="nav-link" href="#" data-bs-toggle="dropdown"><i class="ficon" data-feather="bell"></i><span class="badge rounded-pill bg-danger badge-up">5</span></a>
+                <li class="nav-item dropdown dropdown-notification me-25"><a class="nav-link" href="#" data-bs-toggle="dropdown"><i class="ficon" data-feather="bell"></i>
+                    {%if count > 0%}
+                    <span class="badge rounded-pill bg-danger badge-up">{{count}}</span></a>
+                        {%endif%}
                     <ul class="dropdown-menu dropdown-menu-media dropdown-menu-end">
                         <li class="dropdown-menu-header">
                             <div class="dropdown-header d-flex">
                                 <h4 class="notification-title mb-0 me-auto">Notifications</h4>
-                                <div class="badge rounded-pill badge-light-primary">6 New</div>
+                                <div class="badge rounded-pill badge-light-primary">{{count}} unread</div>
                             </div>
                         </li>
                         <li class="scrollable-container media-list"><a class="d-flex" href="#">
+                            {%for notification in my_notifications%}
                                 <div class="list-item d-flex align-items-start">
                                     <div class="me-1">
                                         <div class="avatar"><img src="{%static 'app-assets/images/portrait/small/avatar-s-15.jpg'%}" alt="avatar" width="32" height="32"></div>
                                     </div>
                                     <div class="list-item-body flex-grow-1">
-                                        <p class="media-heading"><span class="fw-bolder">Congratulation Sam 🎉</span>winner!</p><small class="notification-text"> Won the monthly best seller badge.</small>
+                                        <p class="media-heading"><span class="fw-bolder">{{notification.title}}</span></p><small class="notification-text"> {{notification.body}}</small>
                                     </div>
                                 </div>
                             </a><a class="d-flex" href="#">
-                                <div class="list-item d-flex align-items-start">
-                                    <div class="me-1">
-                                        <div class="avatar"><img src="{%static 'app-assets/images/portrait/small/avatar-s-3.jpg'%}" alt="avatar" width="32" height="32"></div>
-                                    </div>
-                                    <div class="list-item-body flex-grow-1">
-                                        <p class="media-heading"><span class="fw-bolder">New message</span>&nbsp;received</p><small class="notification-text"> You have 10 unread messages</small>
-                                    </div>
-                                </div>
-                            </a><a class="d-flex" href="#">
-                                <div class="list-item d-flex align-items-start">
-                                    <div class="me-1">
-                                        <div class="avatar bg-light-danger">
-                                            <div class="avatar-content">MD</div>
-                                        </div>
-                                    </div>
-                                    <div class="list-item-body flex-grow-1">
-                                        <p class="media-heading"><span class="fw-bolder">Revised Order 👋</span>&nbsp;checkout</p><small class="notification-text"> MD Inc. order updated</small>
-                                    </div>
-                                </div>
-                            </a>
-                            <div class="list-item d-flex align-items-center">
-                                <h6 class="fw-bolder me-auto mb-0">System Notifications</h6>
-                                <div class="form-check form-check-primary form-switch">
-                                    <input class="form-check-input" id="systemNotification" type="checkbox" checked="">
-                                    <label class="form-check-label" for="systemNotification"></label>
-                                </div>
-                            </div><a class="d-flex" href="#">
-                                <div class="list-item d-flex align-items-start">
-                                    <div class="me-1">
-                                        <div class="avatar bg-light-danger">
-                                            <div class="avatar-content"><i class="avatar-icon" data-feather="x"></i></div>
-                                        </div>
-                                    </div>
-                                    <div class="list-item-body flex-grow-1">
-                                        <p class="media-heading"><span class="fw-bolder">Server down</span>&nbsp;registered</p><small class="notification-text"> USA Server is down due to hight CPU usage</small>
-                                    </div>
-                                </div>
-                            </a><a class="d-flex" href="#">
-                                <div class="list-item d-flex align-items-start">
-                                    <div class="me-1">
-                                        <div class="avatar bg-light-success">
-                                            <div class="avatar-content"><i class="avatar-icon" data-feather="check"></i></div>
-                                        </div>
-                                    </div>
-                                    <div class="list-item-body flex-grow-1">
-                                        <p class="media-heading"><span class="fw-bolder">Sales report</span>&nbsp;generated</p><small class="notification-text"> Last month sales report generated</small>
-                                    </div>
-                                </div>
-                            </a><a class="d-flex" href="#">
-                                <div class="list-item d-flex align-items-start">
-                                    <div class="me-1">
-                                        <div class="avatar bg-light-warning">
-                                            <div class="avatar-content"><i class="avatar-icon" data-feather="alert-triangle"></i></div>
-                                        </div>
-                                    </div>
-                                    <div class="list-item-body flex-grow-1">
-                                        <p class="media-heading"><span class="fw-bolder">High memory</span>&nbsp;usage</p><small class="notification-text"> BLR Server using high memory</small>
-                                    </div>
-                                </div>
-                            </a>
+                            {%endfor%}
+
                         </li>
-                        <li class="dropdown-menu-footer"><a class="btn btn-primary w-100" href="#">Read all notifications</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown dropdown-user"><a class="nav-link dropdown-toggle dropdown-user-link" id="dropdown-user" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -1199,7 +1144,12 @@
                                         {%for material in raw_materials%}
                                         <div class="col-xl-3 col-sm-6 col-12 mb-2 mb-xl-0">
                                             <div class="d-flex flex-row">
+                                                {%if material.weight >= material.minimum_ammount %}
                                                 <div class="avatar bg-light-success me-2">
+                                                {%endif%}
+                                                {%if material.weight < material.minimum_ammount %}
+                                                <div class="avatar bg-light-danger me-2">
+                                                {%endif%}
                                                     <div class="avatar-content">
                                                         <i data-feather="box" class="avatar-icon"></i>
                                                     </div>
@@ -1364,17 +1314,13 @@
                         <div class="col-lg-4 col-md-6 col-12">
                             <div class="card card-transaction">
                                 <div class="card-header">
-                                    <h4 class="card-title">Transactions</h4>
+                                    <h4 class="card-title">Expenses</h4>
                                     <div class="dropdown chart-dropdown">
                                         <i data-feather="more-vertical" class="font-medium-3 cursor-pointer" data-bs-toggle="dropdown"></i>
-                                        <div class="dropdown-menu dropdown-menu-end">
-                                            <a class="dropdown-item" href="#">Last 28 Days</a>
-                                            <a class="dropdown-item" href="#">Last Month</a>
-                                            <a class="dropdown-item" href="#">Last Year</a>
-                                        </div>
                                     </div>
                                 </div>
                                 <div class="card-body">
+                                    {%for expense in all_expenses%}
                                     <div class="transaction-item">
                                         <div class="d-flex">
                                             <div class="avatar bg-light-primary rounded float-start">
@@ -1383,68 +1329,13 @@
                                                 </div>
                                             </div>
                                             <div class="transaction-percentage">
-                                                <h6 class="transaction-title">Wallet</h6>
-                                                <small>Starbucks</small>
+                                                <h6 class="transaction-title">{{expense.category.category_name}}</h6>
+                                                <small>{{expense.description}}</small>
                                             </div>
                                         </div>
-                                        <div class="fw-bolder text-danger">- $74</div>
+                                        <div class="fw-bolder text-danger">-{{expense.ammount}} EGP</div>
                                     </div>
-                                    <div class="transaction-item">
-                                        <div class="d-flex">
-                                            <div class="avatar bg-light-success rounded float-start">
-                                                <div class="avatar-content">
-                                                    <i data-feather="check" class="avatar-icon font-medium-3"></i>
-                                                </div>
-                                            </div>
-                                            <div class="transaction-percentage">
-                                                <h6 class="transaction-title">Bank Transfer</h6>
-                                                <small>Add Money</small>
-                                            </div>
-                                        </div>
-                                        <div class="fw-bolder text-success">+ $480</div>
-                                    </div>
-                                    <div class="transaction-item">
-                                        <div class="d-flex">
-                                            <div class="avatar bg-light-danger rounded float-start">
-                                                <div class="avatar-content">
-                                                    <i data-feather="dollar-sign" class="avatar-icon font-medium-3"></i>
-                                                </div>
-                                            </div>
-                                            <div class="transaction-percentage">
-                                                <h6 class="transaction-title">Paypal</h6>
-                                                <small>Add Money</small>
-                                            </div>
-                                        </div>
-                                        <div class="fw-bolder text-success">+ $590</div>
-                                    </div>
-                                    <div class="transaction-item">
-                                        <div class="d-flex">
-                                            <div class="avatar bg-light-warning rounded float-start">
-                                                <div class="avatar-content">
-                                                    <i data-feather="credit-card" class="avatar-icon font-medium-3"></i>
-                                                </div>
-                                            </div>
-                                            <div class="transaction-percentage">
-                                                <h6 class="transaction-title">Mastercard</h6>
-                                                <small>Ordered Food</small>
-                                            </div>
-                                        </div>
-                                        <div class="fw-bolder text-danger">- $23</div>
-                                    </div>
-                                    <div class="transaction-item">
-                                        <div class="d-flex">
-                                            <div class="avatar bg-light-info rounded float-start">
-                                                <div class="avatar-content">
-                                                    <i data-feather="trending-up" class="avatar-icon font-medium-3"></i>
-                                                </div>
-                                            </div>
-                                            <div class="transaction-percentage">
-                                                <h6 class="transaction-title">Transfer</h6>
-                                                <small>Refund</small>
-                                            </div>
-                                        </div>
-                                        <div class="fw-bolder text-success">+ $98</div>
-                                    </div>
+                                    {%endfor%}
                                 </div>
                             </div>
                         </div>

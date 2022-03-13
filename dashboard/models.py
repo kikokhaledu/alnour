@@ -2,6 +2,7 @@ from django.db import models
 from clients.models import clients_table
 from products.models import products_table
 from workers.models import drivers
+from django.contrib.auth.models import User
 
 
 
@@ -20,7 +21,7 @@ class orders(models.Model):
 	def __str__(self):
 		return self.client.name+"'s"+' '+'order'
 
-
+#################################################### shipments############################
 class packed_rubber_shipments (models.Model):
 	shipment_date = models.DateField()
 	issuer_name = models.CharField(max_length= 255,default = 'AlNour Rubber')
@@ -38,3 +39,14 @@ class packed_rubber_shipments (models.Model):
 		verbose_name_plural = 'packed rubber shipments'
 	def __str__(self):
 		return self.name
+
+#################################################### notifications ############################
+class notifications (models.Model):
+	title = models.CharField(max_length= 255)
+	user = models.ForeignKey(User,related_name='user_notification',on_delete=models.CASCADE,null = True ,blank = True)
+	body = models.TextField(null=True,blank=True)
+	seen = models.BooleanField(default = False)
+	class Meta:
+		verbose_name_plural = 'system notifications'
+	def __str__(self):
+		return self.title

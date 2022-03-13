@@ -8,6 +8,7 @@ from products.models import products_table
 class raw_material (models.Model):
 	name = models.CharField(max_length = 255)
 	weight = models.FloatField()
+	minimum_ammount = models.FloatField()
 	class Meta:
 		verbose_name_plural = 'raw_material'
 	def __str__(self):

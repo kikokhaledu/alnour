@@ -9,6 +9,7 @@ class raw_material (models.Model):
 	name = models.CharField(max_length = 255)
 	weight = models.FloatField()
 	minimum_ammount = models.FloatField()
+	price = models.FloatField(null = True,blank=True)
 	class Meta:
 		verbose_name_plural = 'raw_material'
 	def __str__(self):

@@ -1093,10 +1093,10 @@
                         <div class="col-xl-4 col-md-6 col-12">
                             <div class="card card-congratulation-medal">
                                 <div class="card-body">
-                                    <h5>Congratulations 🎉 {{user.username}}</h5>
-                                    <p class="card-text font-small-3">You have won gold medal</p>
+                                    <h5>{{user.username}}</h5>
+                                    <p class="card-text font-small-3">here are the total earnings</p>
                                     <h3 class="mb-75 mt-2 pt-50">
-                                        <a href="#">$48.9k</a>
+                                        <a href="#">48.9k EGP</a>
                                     </h3>
                                     <button type="button" class="btn btn-primary">View Sales</button>
                                     <img src="{%static 'app-assets/images/illustration/badge.svg'%}" class="congratulation-medal" alt="Medal Pic" />
@@ -1336,6 +1336,29 @@
                                         <div class="fw-bolder text-danger">-{{expense.ammount}} EGP</div>
                                     </div>
                                     {%endfor%}
+                                    <!-- fasel hena -->
+                                    {%for expense in all_loader_expenses%}
+                                    <div class="transaction-item">
+                                        <div class="d-flex">
+                                            <div class="avatar bg-light-primary rounded float-start">
+                                                <div class="avatar-content">
+                                                    <i data-feather="pocket" class="avatar-icon font-medium-3"></i>
+                                                </div>
+                                            </div>
+                                            <div class="transaction-percentage">
+                                                <h6 class="transaction-title">load on {{expense.date}}</h6>
+                                                {%if expense.load%}
+                                                <small>Load</small>
+                                                {%endif%}
+                                                {%if expense.unload%}
+                                                <small>Unload</small>
+                                                {%endif%}
+                                            </div>
+                                        </div>
+                                        <div class="fw-bolder text-danger">-{{expense.ammount}} EGP</div>
+                                    </div>
+                                    {%endfor%}
+
                                 </div>
                             </div>
                         </div>

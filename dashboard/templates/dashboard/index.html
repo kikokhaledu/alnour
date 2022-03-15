@@ -1227,8 +1227,8 @@
                             <div class="card">
                                 <div class="card-header d-flex justify-content-between align-items-sm-center align-items-start flex-sm-row flex-column">
                                     <div class="header-left">
-                                        <p class="card-subtitle text-muted mb-25">Balance</p>
-                                        <h4 class="card-title">$74,123</h4>
+                                        <p class="card-subtitle text-muted mb-25">Total Expenses</p>
+                                        <h4 class="card-title">{{graph_total_expenses}} EGP</h4>
                                     </div>
                                 </div>
                                 <div class="card-body">
@@ -1523,10 +1523,10 @@ $(window).on('load', function () {
         }
       },
       data: {
-        labels: ['Monday', 'TUE', 'WED ', 'THU', 'FRI', 'SAT', 'SUN'],
+        labels: ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
         datasets: [
           {
-            data: [710, 350, 470, 580, 230, 460, 120],
+            data: {{values}},
             barThickness: 15,
             backgroundColor: window.colors.solid.info,
             borderColor: 'transparent'
@@ -1535,7 +1535,7 @@ $(window).on('load', function () {
       }
     });
   }
-
+  console.log(`{{values}}`)
 
  //---------------------------------------------
 });

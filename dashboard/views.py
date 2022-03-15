@@ -75,10 +75,18 @@ def home_page(request):
 			notifications.objects.create(title = title_to_write , body = body_to_write)
 		else:
 			pass
-
-	########################### upcomming payments end ##########
-
-	########################### 
+	###########################start expenses graph #############
+	values = [0,0,0,0,0,0,0]
+	for expense in all_expenses:
+		day = expense.date.weekday()
+		day = day+1
+		value = int(expense.ammount)+values[day]
+		values[day] = value
+	graph_total_expenses = 0
+	for value in values:
+		graph_total_expenses += value
+	########################### end expenses graph ###############
+	
 	context = {
 		'user':user,
 		'products':products,
@@ -91,6 +99,8 @@ def home_page(request):
 		'all_orders_count':all_orders_count,
 		'invoices_total':grand_total,
 		'all_pos':all_pos,
+		'values':values,
+		'graph_total_expenses':graph_total_expenses,
 	}
 	return render (request,'dashboard/index.html',context)
 #################################################### logout##############################################

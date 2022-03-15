@@ -1116,39 +1116,39 @@
                                 <div class="card-body statistics-body">
                                     <div class="row">
                                         {%for product in products%}
-                                        <div class="col-xl-3 col-sm-6 col-12 mb-2 mb-xl-0">
-                                            <div class="d-flex flex-row">
-                                                <div class="avatar bg-light-success me-2">
-                                                    <div class="avatar-content">
-                                                        <i data-feather="box" class="avatar-icon"></i>
+                                            <div class="col-xl-3 col-sm-6 col-12 mb-2 mb-xl-0">
+                                                <div class="d-flex flex-row">
+                                                    <div class="avatar bg-light-success me-2">
+                                                        <div class="avatar-content">
+                                                            <i data-feather="box" class="avatar-icon"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="my-auto">
+                                                        <h4 class="fw-bolder mb-0">{{product.weight}} {{product.product.unit}} </h4>
+                                                        <p class="card-text font-small-3 mb-0">{{product.product.name}}</p>
                                                     </div>
                                                 </div>
-                                                <div class="my-auto">
-                                                    <h4 class="fw-bolder mb-0">{{product.weight}} {{product.product.unit}} </h4>
-                                                    <p class="card-text font-small-3 mb-0">{{product.product.name}}</p>
-                                                </div>
                                             </div>
-                                        </div>
-                                    {%endfor%}         
+                                        {%endfor%}         
                                     </div>
                                     <div class="card-header">
                                         <h4 class="card-title">Raw Materials</h4>
                                         <div class="d-flex align-items-center">
                                         </div>
                                     </div>
-                                        {%for material in raw_materials%}
+                                    {%for material in raw_materials%}
                                         <div class="col-xl-3 col-sm-6 col-12 mb-2 mb-xl-0">
                                             <div class="d-flex flex-row">
                                                 {%if material.weight >= material.minimum_ammount %}
                                                 <div class="avatar bg-light-success me-2">
-                                                    {%endif%}
-                                                    {%if material.weight < material.minimum_ammount %}
-                                                    <div class="avatar bg-light-danger me-2">
-                                                    {%endif%}
-                                                        <div class="avatar-content">
-                                                            <i data-feather="box" class="avatar-icon"></i>
-                                                        </div>
+                                                {%endif%}
+                                                {%if material.weight < material.minimum_ammount %}
+                                                <div class="avatar bg-light-danger me-2">
+                                                {%endif%}
+                                                    <div class="avatar-content">
+                                                        <i data-feather="box" class="avatar-icon"></i>
                                                     </div>
+                                                </div>
                                                     <div class="my-auto">
                                                         <h4 class="fw-bolder mb-0">{{material.weight}} {{material.unit}} </h4>
                                                         <p class="card-text font-small-3 mb-0">{{material.name}}</p>
@@ -1156,7 +1156,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        {%endfor%}
+                                    {%endfor%}
                             </div>
                         </div>
                         <!--/ products stats -->
@@ -1222,8 +1222,8 @@
                             <div class="card">
                                 <div class="card-header d-flex justify-content-between align-items-sm-center align-items-start flex-sm-row flex-column">
                                     <div class="header-left">
-                                        <p class="card-subtitle text-muted mb-25">Balance</p>
-                                        <h4 class="card-title">$74,123</h4>
+                                        <p class="card-subtitle text-muted mb-25">Total Expenses</p>
+                                        <h4 class="card-title">{{graph_total_expenses}} EGP</h4>
                                     </div>
                                 </div>
                                 <div class="card-body">
@@ -1598,16 +1598,18 @@
                         }
                     },
                     data: {
-                        labels: ['Monday', 'TUE', 'WED ', 'THU', 'FRI', 'SAT', 'SUN'],
-                        datasets: [{
-                            data: [710, 350, 470, 580, 230, 460, 120],
+                        labels: ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
+                        datasets: [
+                        {
+                            data: {{values}},
                             barThickness: 15,
                             backgroundColor: window.colors.solid.info,
                             borderColor: 'transparent'
-                        }]
+                        }
+                        ]
                     }
-                });
-            }
+                    });
+                }
 
             // Line Chart
             // --------------------------------------------------------------------

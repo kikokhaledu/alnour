@@ -66,7 +66,7 @@ class expenses (models.Model):
 	ammount = models.FloatField(null = True , blank = True)
 	description = models.TextField(null = True , blank = True)
 	function = models.TextField(null = True , blank = True)
-	date = models.DateField(auto_now_add=True,editable=True)
+	date = models.DateField(editable=True)
 	class Meta:
 		verbose_name_plural = 'Expeses'
 	def __str__(self):

@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'dashboard',
     'finance',
     'inventory',
+    'django_seed',
     
 ]
 
@@ -89,25 +90,25 @@ DATABASES = {
     }
 }
 
-# DATABASES = {
+DATABASES = {
 
-#     'default': {
+    'default': {
 
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
 
-#         'NAME': 'alnour_rubber',
+        'NAME': 'alnour_rubber',
 
-#         'USER': 'postgres',
+        'USER': 'postgres',
 
-#         'PASSWORD': 'Qazwsx00',
+        'PASSWORD': 'Qazwsx00',
 
-#         'HOST': 'localhost',
+        'HOST': 'localhost',
 
-#         'PORT': '5432',
+        'PORT': '5432',
 
-#     }
+    }
 
-# }
+}
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
@@ -144,3 +145,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 STATIC_ROOT = os.path.join(BASE_DIR,'static')
 STATIC_URL = '/static/'
+DEFAULT_AUTO_FIELD='django.db.models.AutoField' 

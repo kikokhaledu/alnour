@@ -13,8 +13,8 @@ from django.utils import timezone
 #model imports
 from products.models import products_table
 from inventory.models import raw_material,finished_products
-from .models import notifications
-from finance.models import expenses,loader_expenses
+from .models import notifications,orders
+from finance.models import expenses,loader_expenses,invoices_table
 #===============================index login===========================================#
 def loginpage(request):
 	user= request.user
@@ -42,13 +42,18 @@ def home_page(request):
 	####################### date data ##########################
 	date = datetime.datetime.today()
 	week = date.strftime("%U")
+	
 	year, week, _ = timezone.now().isocalendar()
 	######################queries###############################
 	products = finished_products.objects.all()
 	raw_materials = raw_material.objects.all()
+	all_orders = orders.objects.all()
+	all_orders_count = all_orders.count()
 	my_notifications = notifications.objects.filter(user = None)|notifications.objects.filter(user = user)
-	all_expenses = expenses.objects.filter(date__iso_year=year, date__week=week)
-	all_loader_expenses = loader_expenses.objects.filter(date__iso_year=year, date__week=week)
+	all_expenses = expenses.objects.filter(date__iso_year=year, date__week=week).order_by('date')
+	all_loader_expenses = loader_expenses.objects.filter(date__iso_year=year, date__week=week).order_by('date')
+	all_invoices = invoices_table.objects.filter(paid = True,invoice_date__month = date.month)
+	grand_total = 0
 	############################notifications####################
 	count = 0 
 	for notification in my_notifications:
@@ -57,7 +62,8 @@ def home_page(request):
 		else:
 			pass
 	############################end notifications################
-
+	for invoice in all_invoices:
+		grand_total +=  invoice.total
 	context = {
 		'user':user,
 		'products':products,
@@ -66,6 +72,9 @@ def home_page(request):
 		'count':count,
 		'all_expenses':all_expenses,
 		'all_loader_expenses':all_loader_expenses,
+		'all_orders':all_orders,
+		'all_orders_count':all_orders_count,
+		'invoices_total':grand_total,
 	}
 	return render (request,'dashboard/index.html',context)
 #################################################### logout##############################################

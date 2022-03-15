@@ -41,7 +41,7 @@ IBAN : EG 250003064331713310273010110""")
 	address = models.TextField(default = """شركه النور للمنتجات المطاطيه
 شارع علي حفظي متفرع من الشارع الجديد التبين حلوان""")
 	PO = models.ForeignKey(PO_table,related_name='invoice',on_delete=models.CASCADE)
-
+	paid = models.BooleanField(default = False)
 	class Meta:
 		verbose_name_plural = 'invoices'
 	def __str__(self):

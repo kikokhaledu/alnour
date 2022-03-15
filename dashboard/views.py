@@ -14,7 +14,7 @@ from django.utils import timezone
 from products.models import products_table
 from inventory.models import raw_material,finished_products
 from .models import notifications,orders
-from finance.models import expenses,loader_expenses,invoices_table
+from finance.models import expenses,loader_expenses,invoices_table,PO_table
 #===============================index login===========================================#
 def loginpage(request):
 	user= request.user
@@ -53,6 +53,7 @@ def home_page(request):
 	all_expenses = expenses.objects.filter(date__iso_year=year, date__week=week).order_by('date')
 	all_loader_expenses = loader_expenses.objects.filter(date__iso_year=year, date__week=week).order_by('date')
 	all_invoices = invoices_table.objects.filter(paid = True,invoice_date__month = date.month)
+	all_pos = PO_table.objects.filter(due_date__iso_year=year, due_date__week=week).order_by('due_date')
 	grand_total = 0
 	############################notifications####################
 	count = 0 
@@ -64,6 +65,20 @@ def home_page(request):
 	############################end notifications################
 	for invoice in all_invoices:
 		grand_total +=  invoice.total
+	########################### upcomming payments tab start ####
+	for po in all_pos:
+		title_to_write = po.client.name+"'s" + ' '+' upcomming payment'
+		body_to_write = 'You have an upcomming payment that is due on the'+' '+str(po.due_date)
+		if not po.notified:
+			po.notified = True
+			po.save()
+			notifications.objects.create(title = title_to_write , body = body_to_write)
+		else:
+			pass
+
+	########################### upcomming payments end ##########
+
+	########################### 
 	context = {
 		'user':user,
 		'products':products,
@@ -75,6 +90,7 @@ def home_page(request):
 		'all_orders':all_orders,
 		'all_orders_count':all_orders_count,
 		'invoices_total':grand_total,
+		'all_pos':all_pos,
 	}
 	return render (request,'dashboard/index.html',context)
 #################################################### logout##############################################

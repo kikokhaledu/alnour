@@ -1402,7 +1402,7 @@
 
     <!-- BEGIN: Page JS-->
     <script src="{%static 'app-assets/js/scripts/pages/dashboard-ecommerce.js'%}"></script>
-    <script src="{%static 'app-assets/js/scripts/charts/chart-chartjs.js'%}"></script>
+    <!-- <script src="{%static 'app-assets/js/scripts/charts/chart-chartjs.js'%}"></script> -->
 
     <!-- END: Page JS-->
 
@@ -1416,14 +1416,16 @@
             }
         })
 
-                  // Horizontal Bar Chart
-  // --------------------------------------------------------------------
-  $(window).on('load', function () {
+
+
+$(window).on('load', function () {
   'use strict';
 
-  var horizontalBarChartEx = $('.horizontal-bar-chart-ex')
-   // Color Variables
-   var primaryColorShade = '#836AF9',
+  var chartWrapper = $('.chartjs'),
+    horizontalBarChartEx = $('.horizontal-bar-chart-ex');
+
+  // Color Variables
+  var primaryColorShade = '#836AF9',
     yellowColor = '#ffe800',
     successColorShade = '#28dac6',
     warningColorShade = '#ffe802',
@@ -1451,6 +1453,9 @@
     });
   }
 
+
+  // Horizontal Bar Chart
+  // --------------------------------------------------------------------
   if (horizontalBarChartEx.length) {
     new Chart(horizontalBarChartEx, {
       type: 'horizontalBar',
@@ -1518,10 +1523,10 @@
         }
       },
       data: {
-        labels: ['MON', 'TUE', 'WED ', 'THU', 'FRI', 'SAT', 'SUN'],
+        labels: ['Monday', 'TUE', 'WED ', 'THU', 'FRI', 'SAT', 'SUN'],
         datasets: [
           {
-            data: [900, 350, 470, 580, 230, 460, 120],
+            data: [710, 350, 470, 580, 230, 460, 120],
             barThickness: 15,
             backgroundColor: window.colors.solid.info,
             borderColor: 'transparent'
@@ -1530,6 +1535,9 @@
       }
     });
   }
+
+
+ //---------------------------------------------
 });
     </script>
 </body>

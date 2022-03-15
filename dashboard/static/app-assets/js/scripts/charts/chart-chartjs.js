@@ -329,7 +329,7 @@ $(window).on('load', function () {
         labels: ['MON', 'TUE', 'WED ', 'THU', 'FRI', 'SAT', 'SUN'],
         datasets: [
           {
-            data: [710, 350, 470, 580, 230, 460, 120],
+            data: [1000, 350, 470, 580, 230, 460, 120],
             barThickness: 15,
             backgroundColor: window.colors.solid.info,
             borderColor: 'transparent'

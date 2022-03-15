@@ -13,6 +13,8 @@ class PO_table (models.Model):
 	due_date = models.DateField(null = True , blank = True)
 	invoice_period_start = models.DateField(null = True , blank = True)
 	invoice_period_end = models.DateField(null = True , blank = True)
+	completed = models.BooleanField(default = False)
+	notified = models.BooleanField(default = False)
 	#due date  date field  will alert me when there is a payment this week  in the upcoming payments tab
 	class Meta:
 		verbose_name_plural = 'POs'

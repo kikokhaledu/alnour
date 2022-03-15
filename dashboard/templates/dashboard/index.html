@@ -1415,6 +1415,122 @@
                 });
             }
         })
+
+                  // Horizontal Bar Chart
+  // --------------------------------------------------------------------
+  $(window).on('load', function () {
+  'use strict';
+
+  var horizontalBarChartEx = $('.horizontal-bar-chart-ex')
+   // Color Variables
+   var primaryColorShade = '#836AF9',
+    yellowColor = '#ffe800',
+    successColorShade = '#28dac6',
+    warningColorShade = '#ffe802',
+    warningLightColor = '#FDAC34',
+    infoColorShade = '#299AFF',
+    greyColor = '#4F5D70',
+    blueColor = '#2c9aff',
+    blueLightColor = '#84D0FF',
+    greyLightColor = '#EDF1F4',
+    tooltipShadow = 'rgba(0, 0, 0, 0.25)',
+    lineChartPrimary = '#666ee8',
+    lineChartDanger = '#ff4961',
+    labelColor = '#6e6b7b',
+    grid_line_color = 'rgba(200, 200, 200, 0.2)'; // RGBA color helps in dark layout
+
+  // Detect Dark Layout
+  if ($('html').hasClass('dark-layout')) {
+    labelColor = '#b4b7bd';
+  }
+
+  // Wrap charts with div of height according to their data-height
+  if (chartWrapper.length) {
+    chartWrapper.each(function () {
+      $(this).wrap($('<div style="height:' + this.getAttribute('data-height') + 'px"></div>'));
+    });
+  }
+
+  if (horizontalBarChartEx.length) {
+    new Chart(horizontalBarChartEx, {
+      type: 'horizontalBar',
+      options: {
+        elements: {
+          rectangle: {
+            borderWidth: 2,
+            borderSkipped: 'right'
+          }
+        },
+        tooltips: {
+          // Updated default tooltip UI
+          shadowOffsetX: 1,
+          shadowOffsetY: 1,
+          shadowBlur: 8,
+          shadowColor: tooltipShadow,
+          backgroundColor: window.colors.solid.white,
+          titleFontColor: window.colors.solid.black,
+          bodyFontColor: window.colors.solid.black
+        },
+        responsive: true,
+        maintainAspectRatio: false,
+        responsiveAnimationDuration: 500,
+        legend: {
+          display: false
+        },
+        layout: {
+          padding: {
+            bottom: -30,
+            left: -25
+          }
+        },
+        scales: {
+          xAxes: [
+            {
+              display: true,
+              gridLines: {
+                zeroLineColor: grid_line_color,
+                borderColor: 'transparent',
+                color: grid_line_color
+              },
+              scaleLabel: {
+                display: true
+              },
+              ticks: {
+                min: 0,
+                fontColor: labelColor
+              }
+            }
+          ],
+          yAxes: [
+            {
+              display: true,
+              gridLines: {
+                display: false
+              },
+              scaleLabel: {
+                display: true
+              },
+              ticks: {
+                fontColor: labelColor
+              }
+            }
+          ]
+        }
+      },
+      data: {
+        labels: ['MON', 'TUE', 'WED ', 'THU', 'FRI', 'SAT', 'SUN'],
+        datasets: [
+          {
+            data: [900, 350, 470, 580, 230, 460, 120],
+            barThickness: 15,
+            backgroundColor: window.colors.solid.info,
+            borderColor: 'transparent'
+          }
+        ]
+      }
+    });
+  }
+});
     </script>
 </body>
 <!-- END: Body-->

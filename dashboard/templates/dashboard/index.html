@@ -1129,39 +1129,34 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    {%endfor%}                               
-                                    <br> 
-                                    <br> 
-                                    <br> 
-                                    <br> 
-                                    <br>         
+                                    {%endfor%}         
+                                    </div>
+                                    <div class="card-header">
                                         <h4 class="card-title">Raw Materials</h4>
-                                    <br>
-                                    <br> 
-                                    <br> 
-                                    <br> 
+                                        <div class="d-flex align-items-center">
+                                        </div>
                                     </div>
                                         {%for material in raw_materials%}
                                         <div class="col-xl-3 col-sm-6 col-12 mb-2 mb-xl-0">
                                             <div class="d-flex flex-row">
                                                 {%if material.weight >= material.minimum_ammount %}
                                                 <div class="avatar bg-light-success me-2">
-                                                {%endif%}
-                                                {%if material.weight < material.minimum_ammount %}
-                                                <div class="avatar bg-light-danger me-2">
-                                                {%endif%}
-                                                    <div class="avatar-content">
-                                                        <i data-feather="box" class="avatar-icon"></i>
+                                                    {%endif%}
+                                                    {%if material.weight < material.minimum_ammount %}
+                                                    <div class="avatar bg-light-danger me-2">
+                                                    {%endif%}
+                                                        <div class="avatar-content">
+                                                            <i data-feather="box" class="avatar-icon"></i>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="my-auto">
-                                                    <h4 class="fw-bolder mb-0">{{material.weight}} {{material.unit}} </h4>
-                                                    <p class="card-text font-small-3 mb-0">{{material.name}}</p>
+                                                    <div class="my-auto">
+                                                        <h4 class="fw-bolder mb-0">{{material.weight}} {{material.unit}} </h4>
+                                                        <p class="card-text font-small-3 mb-0">{{material.name}}</p>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    {%endfor%}
-                                </div>
+                                        {%endfor%}
                             </div>
                         </div>
                         <!--/ products stats -->

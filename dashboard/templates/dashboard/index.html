@@ -1407,7 +1407,7 @@
     <!-- END: Page JS-->
 
     <script>
-        $(window).on('load', function() {
+        $(window).on('load', function () {
             if (feather) {
                 feather.replace({
                     width: 14,
@@ -1415,130 +1415,404 @@
                 });
             }
         })
+        $(window).on('load', function () {
+            'use strict';
 
+            var chartWrapper = $('.chartjs'),
+                horizontalBarChartEx = $('.horizontal-bar-chart-ex'),
+                lineChartEx = $('.line-chart-ex'),
+                doughnutChartEx = $('.doughnut-chart-ex');
 
+            // Color Variables
+            var primaryColorShade = '#836AF9',
+                yellowColor = '#ffe800',
+                successColorShade = '#28dac6',
+                warningColorShade = '#ffe802',
+                warningLightColor = '#FDAC34',
+                infoColorShade = '#299AFF',
+                greyColor = '#4F5D70',
+                blueColor = '#2c9aff',
+                blueLightColor = '#84D0FF',
+                greyLightColor = '#EDF1F4',
+                tooltipShadow = 'rgba(0, 0, 0, 0.25)',
+                lineChartPrimary = '#666ee8',
+                lineChartDanger = '#ff4961',
+                labelColor = '#6e6b7b',
+                grid_line_color = 'rgba(200, 200, 200, 0.2)'; // RGBA color helps in dark layout
 
-$(window).on('load', function () {
-  'use strict';
-
-  var chartWrapper = $('.chartjs'),
-    horizontalBarChartEx = $('.horizontal-bar-chart-ex');
-
-  // Color Variables
-  var primaryColorShade = '#836AF9',
-    yellowColor = '#ffe800',
-    successColorShade = '#28dac6',
-    warningColorShade = '#ffe802',
-    warningLightColor = '#FDAC34',
-    infoColorShade = '#299AFF',
-    greyColor = '#4F5D70',
-    blueColor = '#2c9aff',
-    blueLightColor = '#84D0FF',
-    greyLightColor = '#EDF1F4',
-    tooltipShadow = 'rgba(0, 0, 0, 0.25)',
-    lineChartPrimary = '#666ee8',
-    lineChartDanger = '#ff4961',
-    labelColor = '#6e6b7b',
-    grid_line_color = 'rgba(200, 200, 200, 0.2)'; // RGBA color helps in dark layout
-
-  // Detect Dark Layout
-  if ($('html').hasClass('dark-layout')) {
-    labelColor = '#b4b7bd';
-  }
-
-  // Wrap charts with div of height according to their data-height
-  if (chartWrapper.length) {
-    chartWrapper.each(function () {
-      $(this).wrap($('<div style="height:' + this.getAttribute('data-height') + 'px"></div>'));
-    });
-  }
-
-
-  // Horizontal Bar Chart
-  // --------------------------------------------------------------------
-  if (horizontalBarChartEx.length) {
-    new Chart(horizontalBarChartEx, {
-      type: 'horizontalBar',
-      options: {
-        elements: {
-          rectangle: {
-            borderWidth: 2,
-            borderSkipped: 'right'
-          }
-        },
-        tooltips: {
-          // Updated default tooltip UI
-          shadowOffsetX: 1,
-          shadowOffsetY: 1,
-          shadowBlur: 8,
-          shadowColor: tooltipShadow,
-          backgroundColor: window.colors.solid.white,
-          titleFontColor: window.colors.solid.black,
-          bodyFontColor: window.colors.solid.black
-        },
-        responsive: true,
-        maintainAspectRatio: false,
-        responsiveAnimationDuration: 500,
-        legend: {
-          display: false
-        },
-        layout: {
-          padding: {
-            bottom: -30,
-            left: -25
-          }
-        },
-        scales: {
-          xAxes: [
-            {
-              display: true,
-              gridLines: {
-                zeroLineColor: grid_line_color,
-                borderColor: 'transparent',
-                color: grid_line_color
-              },
-              scaleLabel: {
-                display: true
-              },
-              ticks: {
-                min: 0,
-                fontColor: labelColor
-              }
+            // Detect Dark Layout
+            if ($('html').hasClass('dark-layout')) {
+                labelColor = '#b4b7bd';
             }
-          ],
-          yAxes: [
-            {
-              display: true,
-              gridLines: {
-                display: false
-              },
-              scaleLabel: {
-                display: true
-              },
-              ticks: {
-                fontColor: labelColor
-              }
+
+            // Wrap charts with div of height according to their data-height
+            if (chartWrapper.length) {
+                chartWrapper.each(function () {
+                    $(this).wrap($('<div style="height:' + this.getAttribute('data-height') +
+                        'px"></div>'));
+                });
             }
-          ]
-        }
-      },
-      data: {
-        labels: ['Monday', 'TUE', 'WED ', 'THU', 'FRI', 'SAT', 'SUN'],
-        datasets: [
-          {
-            data: [710, 350, 470, 580, 230, 460, 120],
-            barThickness: 15,
-            backgroundColor: window.colors.solid.info,
-            borderColor: 'transparent'
-          }
-        ]
-      }
-    });
-  }
 
+            //------------ Goal Overview Chart ------------
+            //---------------------------------------------
+            var $barColor = '#f3f3f3';
+            var $trackBgColor = '#EBEBEB';
+            var $textMutedColor = '#b9b9c3';
+            var $budgetStrokeColor2 = '#dcdae3';
+            var $goalStrokeColor2 = '#51e5a8';
+            var $strokeColor = '#ebe9f1';
+            var $textHeadingColor = '#5e5873';
+            var $earningsStrokeColor2 = '#28c76f66';
+            var $earningsStrokeColor3 = '#28c76f33';
 
- //---------------------------------------------
-});
+            var $goalOverviewChart = document.querySelector('#goal-overview-radial-bar-chart');
+
+            var goalOverviewChartOptions;
+
+          
+            var goalOverviewChart;
+            var isRtl = $('html').attr('data-textdirection') === 'rtl';
+            goalOverviewChartOptions = {
+                chart: {
+                    height: 245,
+                    type: 'radialBar',
+                    sparkline: {
+                        enabled: true
+                    },
+                    dropShadow: {
+                        enabled: true,
+                        blur: 3,
+                        left: 1,
+                        top: 1,
+                        opacity: 0.1
+                    }
+                },
+                colors: [$goalStrokeColor2],
+                plotOptions: {
+                    radialBar: {
+                        offsetY: -10,
+                        startAngle: -150,
+                        endAngle: 150,
+                        hollow: {
+                            size: '77%'
+                        },
+                        track: {
+                            background: $strokeColor,
+                            strokeWidth: '50%'
+                        },
+                        dataLabels: {
+                            name: {
+                                show: false
+                            },
+                            value: {
+                                color: $textHeadingColor,
+                                fontSize: '2.86rem',
+                                fontWeight: '600'
+                            }
+                        }
+                    }
+                },
+                fill: {
+                    type: 'gradient',
+                    gradient: {
+                        shade: 'dark',
+                        type: 'horizontal',
+                        shadeIntensity: 0.5,
+                        gradientToColors: [window.colors.solid.success],
+                        inverseColors: true,
+                        opacityFrom: 1,
+                        opacityTo: 1,
+                        stops: [0, 100]
+                    }
+                },
+                series: [83],
+                stroke: {
+                    lineCap: 'round'
+                },
+                grid: {
+                    padding: {
+                        bottom: 30
+                    }
+                }
+            };
+            goalOverviewChart = new ApexCharts($goalOverviewChart, goalOverviewChartOptions);
+            goalOverviewChart.render();
+
+            // Horizontal Bar Chart
+            // --------------------------------------------------------------------
+            if (horizontalBarChartEx.length) {
+                new Chart(horizontalBarChartEx, {
+                    type: 'horizontalBar',
+                    options: {
+                        elements: {
+                            rectangle: {
+                                borderWidth: 2,
+                                borderSkipped: 'right'
+                            }
+                        },
+                        tooltips: {
+                            // Updated default tooltip UI
+                            shadowOffsetX: 1,
+                            shadowOffsetY: 1,
+                            shadowBlur: 8,
+                            shadowColor: tooltipShadow,
+                            backgroundColor: window.colors.solid.white,
+                            titleFontColor: window.colors.solid.black,
+                            bodyFontColor: window.colors.solid.black
+                        },
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        responsiveAnimationDuration: 500,
+                        legend: {
+                            display: false
+                        },
+                        layout: {
+                            padding: {
+                                bottom: -30,
+                                left: -25
+                            }
+                        },
+                        scales: {
+                            xAxes: [{
+                                display: true,
+                                gridLines: {
+                                    zeroLineColor: grid_line_color,
+                                    borderColor: 'transparent',
+                                    color: grid_line_color
+                                },
+                                scaleLabel: {
+                                    display: true
+                                },
+                                ticks: {
+                                    min: 0,
+                                    fontColor: labelColor
+                                }
+                            }],
+                            yAxes: [{
+                                display: true,
+                                gridLines: {
+                                    display: false
+                                },
+                                scaleLabel: {
+                                    display: true
+                                },
+                                ticks: {
+                                    fontColor: labelColor
+                                }
+                            }]
+                        }
+                    },
+                    data: {
+                        labels: ['Monday', 'TUE', 'WED ', 'THU', 'FRI', 'SAT', 'SUN'],
+                        datasets: [{
+                            data: [710, 350, 470, 580, 230, 460, 120],
+                            barThickness: 15,
+                            backgroundColor: window.colors.solid.info,
+                            borderColor: 'transparent'
+                        }]
+                    }
+                });
+            }
+
+            // Line Chart
+            // --------------------------------------------------------------------
+            if (lineChartEx.length) {
+                var lineExample = new Chart(lineChartEx, {
+                    type: 'line',
+                    plugins: [
+                        // to add spacing between legends and chart
+                        {
+                            beforeInit: function (chart) {
+                                chart.legend.afterFit = function () {
+                                    this.height += 20;
+                                };
+                            }
+                        }
+                    ],
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        backgroundColor: false,
+                        hover: {
+                            mode: 'label'
+                        },
+                        tooltips: {
+                            // Updated default tooltip UI
+                            shadowOffsetX: 1,
+                            shadowOffsetY: 1,
+                            shadowBlur: 8,
+                            shadowColor: tooltipShadow,
+                            backgroundColor: window.colors.solid.white,
+                            titleFontColor: window.colors.solid.black,
+                            bodyFontColor: window.colors.solid.black
+                        },
+                        layout: {
+                            padding: {
+                                top: -15,
+                                bottom: -25,
+                                left: -15
+                            }
+                        },
+                        scales: {
+                            xAxes: [{
+                                display: true,
+                                scaleLabel: {
+                                    display: true
+                                },
+                                gridLines: {
+                                    display: true,
+                                    color: grid_line_color,
+                                    zeroLineColor: grid_line_color
+                                },
+                                ticks: {
+                                    fontColor: labelColor
+                                }
+                            }],
+                            yAxes: [{
+                                display: true,
+                                scaleLabel: {
+                                    display: true
+                                },
+                                ticks: {
+                                    stepSize: 100,
+                                    min: 0,
+                                    max: 400,
+                                    fontColor: labelColor
+                                },
+                                gridLines: {
+                                    display: true,
+                                    color: grid_line_color,
+                                    zeroLineColor: grid_line_color
+                                }
+                            }]
+                        },
+                        legend: {
+                            position: 'top',
+                            align: 'start',
+                            labels: {
+                                usePointStyle: true,
+                                padding: 25,
+                                boxWidth: 9
+                            }
+                        }
+                    },
+                    data: {
+                        labels: [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140],
+                        datasets: [{
+                                data: [80, 150, 180, 270, 210, 160, 160, 202, 265, 210, 270, 255,
+                                    290, 360, 375
+                                ],
+                                label: 'Europe',
+                                borderColor: lineChartDanger,
+                                lineTension: 0.5,
+                                pointStyle: 'circle',
+                                backgroundColor: lineChartDanger,
+                                fill: false,
+                                pointRadius: 1,
+                                pointHoverRadius: 5,
+                                pointHoverBorderWidth: 5,
+                                pointBorderColor: 'transparent',
+                                pointHoverBorderColor: window.colors.solid.white,
+                                pointHoverBackgroundColor: lineChartDanger,
+                                pointShadowOffsetX: 1,
+                                pointShadowOffsetY: 1,
+                                pointShadowBlur: 5,
+                                pointShadowColor: tooltipShadow
+                            },
+                            {
+                                data: [80, 125, 105, 130, 215, 195, 140, 160, 230, 300, 220, 170,
+                                    210, 200, 280
+                                ],
+                                label: 'Asia',
+                                borderColor: lineChartPrimary,
+                                lineTension: 0.5,
+                                pointStyle: 'circle',
+                                backgroundColor: lineChartPrimary,
+                                fill: false,
+                                pointRadius: 1,
+                                pointHoverRadius: 5,
+                                pointHoverBorderWidth: 5,
+                                pointBorderColor: 'transparent',
+                                pointHoverBorderColor: window.colors.solid.white,
+                                pointHoverBackgroundColor: lineChartPrimary,
+                                pointShadowOffsetX: 1,
+                                pointShadowOffsetY: 1,
+                                pointShadowBlur: 5,
+                                pointShadowColor: tooltipShadow
+                            },
+                            {
+                                data: [80, 99, 82, 90, 115, 115, 74, 75, 130, 155, 125, 90, 140,
+                                    130, 180
+                                ],
+                                label: 'Africa',
+                                borderColor: warningColorShade,
+                                lineTension: 0.5,
+                                pointStyle: 'circle',
+                                backgroundColor: warningColorShade,
+                                fill: false,
+                                pointRadius: 1,
+                                pointHoverRadius: 5,
+                                pointHoverBorderWidth: 5,
+                                pointBorderColor: 'transparent',
+                                pointHoverBorderColor: window.colors.solid.white,
+                                pointHoverBackgroundColor: warningColorShade,
+                                pointShadowOffsetX: 1,
+                                pointShadowOffsetY: 1,
+                                pointShadowBlur: 5,
+                                pointShadowColor: tooltipShadow
+                            }
+                        ]
+                    }
+                });
+            }
+
+            // Doughnut Chart
+            // --------------------------------------------------------------------
+            if (doughnutChartEx.length) {
+                var doughnutExample = new Chart(doughnutChartEx, {
+                    type: 'doughnut',
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        responsiveAnimationDuration: 500,
+                        cutoutPercentage: 60,
+                        legend: {
+                            display: false
+                        },
+                        tooltips: {
+                            callbacks: {
+                                label: function (tooltipItem, data) {
+                                    var label = data.datasets[0].labels[tooltipItem.index] || '',
+                                        value = data.datasets[0].data[tooltipItem.index];
+                                    var output = ' ' + label + ' : ' + value + ' %';
+                                    return output;
+                                }
+                            },
+                            // Updated default tooltip UI
+                            shadowOffsetX: 1,
+                            shadowOffsetY: 1,
+                            shadowBlur: 8,
+                            shadowColor: tooltipShadow,
+                            backgroundColor: window.colors.solid.white,
+                            titleFontColor: window.colors.solid.black,
+                            bodyFontColor: window.colors.solid.black
+                        }
+                    },
+                    data: {
+                        datasets: [{
+                            labels: ['Tablet', 'Mobile', 'Desktop'],
+                            data: [10, 10, 80],
+                            backgroundColor: [successColorShade, warningLightColor, window
+                                .colors.solid.primary
+                            ],
+                            borderWidth: 0,
+                            pointStyle: 'rectRounded'
+                        }]
+                    }
+                });
+            }
+            //---------------------------------------------
+        });
     </script>
 </body>
 <!-- END: Body-->

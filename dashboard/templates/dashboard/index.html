@@ -7,13 +7,16 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0,minimal-ui">
-    <meta name="description" content="Vuexy admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
-    <meta name="keywords" content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
+    <meta name="description"
+        content="Vuexy admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
+    <meta name="keywords"
+        content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="PIXINVENT">
     <title>Al Nour Rubber</title>
     <link rel="apple-touch-icon" href="{%static 'app-assets/images/ico/apple-icon-120.png'%}">
     <link rel="shortcut icon" type="image/x-icon" href="{%static 'app-assets/images/ico/favicon.ico'%}">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600"
+        rel="stylesheet">
 
     <!-- BEGIN: Vendor CSS-->
     <link rel="stylesheet" type="text/css" href="{%static 'app-assets/vendors/css/vendors.min.css'%}">
@@ -34,7 +37,8 @@
     <link rel="stylesheet" type="text/css" href="{%static 'app-assets/css/core/menu/menu-types/horizontal-menu.css'%}">
     <link rel="stylesheet" type="text/css" href="{%static 'app-assets/css/pages/dashboard-ecommerce.css'%}">
     <link rel="stylesheet" type="text/css" href="{%static 'app-assets/css/plugins/charts/chart-apex.css'%}">
-    <link rel="stylesheet" type="text/css" href="{%static 'app-assets/css/plugins/extensions/ext-component-toastr.css'%}">
+    <link rel="stylesheet" type="text/css"
+        href="{%static 'app-assets/css/plugins/extensions/ext-component-toastr.css'%}">
     <!-- END: Page CSS-->
 
     <!-- BEGIN: Custom CSS-->
@@ -46,29 +50,35 @@
 
 <!-- BEGIN: Body-->
 
-<body class="horizontal-layout horizontal-menu  navbar-floating footer-static  " data-open="hover" data-menu="horizontal-menu" data-col="">
+<body class="horizontal-layout horizontal-menu  navbar-floating footer-static  " data-open="hover"
+    data-menu="horizontal-menu" data-col="">
 
     <!-- BEGIN: Header-->
-    <nav class="header-navbar navbar-expand-lg navbar navbar-fixed align-items-center navbar-shadow navbar-brand-center" data-nav="brand-center">
+    <nav class="header-navbar navbar-expand-lg navbar navbar-fixed align-items-center navbar-shadow navbar-brand-center"
+        data-nav="brand-center">
         <div class="navbar-header d-xl-block d-none">
             <ul class="nav navbar-nav">
-                <li class="nav-item"><a class="navbar-brand" href="{%static 'html/ltr/horizontal-menu-template/index.html'%}"><span class="brand-logo">
-                    <img src="{%static 'app-assets/images/logo/alnour_logo2.png'%}" alt="">
+                <li class="nav-item"><a class="navbar-brand"
+                        href="{%static 'html/ltr/horizontal-menu-template/index.html'%}"><span class="brand-logo">
+                            <img src="{%static 'app-assets/images/logo/alnour_logo2.png'%}" alt="">
                     </a></li>
             </ul>
         </div>
         <div class="navbar-container d-flex content">
             <div class="bookmark-wrapper d-flex align-items-center">
                 <ul class="nav navbar-nav d-xl-none">
-                    <li class="nav-item"><a class="nav-link menu-toggle" href="#"><i class="ficon" data-feather="menu"></i></a></li>
+                    <li class="nav-item"><a class="nav-link menu-toggle" href="#"><i class="ficon"
+                                data-feather="menu"></i></a></li>
                 </ul>
             </div>
             <ul class="nav navbar-nav align-items-center ms-auto">
-                <li class="nav-item d-none d-lg-block"><a class="nav-link nav-link-style"><i class="ficon" data-feather="moon"></i></a></li>
-                <li class="nav-item dropdown dropdown-notification me-25"><a class="nav-link" href="#" data-bs-toggle="dropdown"><i class="ficon" data-feather="bell"></i>
-                    {%if count > 0%}
-                    <span class="badge rounded-pill bg-danger badge-up">{{count}}</span></a>
-                        {%endif%}
+                <li class="nav-item d-none d-lg-block"><a class="nav-link nav-link-style"><i class="ficon"
+                            data-feather="moon"></i></a></li>
+                <li class="nav-item dropdown dropdown-notification me-25"><a class="nav-link" href="#"
+                        data-bs-toggle="dropdown"><i class="ficon" data-feather="bell"></i>
+                        {%if count > 0%}
+                        <span class="badge rounded-pill bg-danger badge-up">{{count}}</span></a>
+                    {%endif%}
                     <ul class="dropdown-menu dropdown-menu-media dropdown-menu-end">
                         <li class="dropdown-menu-header">
                             <div class="dropdown-header d-flex">
@@ -77,26 +87,45 @@
                             </div>
                         </li>
                         <li class="scrollable-container media-list"><a class="d-flex" href="#">
-                            {%for notification in my_notifications%}
+                                {%for notification in my_notifications%}
                                 <div class="list-item d-flex align-items-start">
                                     <div class="me-1">
-                                        <div class="avatar"><img src="{%static 'app-assets/images/portrait/small/avatar-s-15.jpg'%}" alt="avatar" width="32" height="32"></div>
+                                        <div class="avatar"><img
+                                                src="{%static 'app-assets/images/portrait/small/avatar-s-15.jpg'%}"
+                                                alt="avatar" width="32" height="32"></div>
                                     </div>
                                     <div class="list-item-body flex-grow-1">
-                                        <p class="media-heading"><span class="fw-bolder">{{notification.title}}</span></p><small class="notification-text"> {{notification.body}}</small>
+                                        <p class="media-heading"><span class="fw-bolder">{{notification.title}}</span>
+                                        </p><small class="notification-text"> {{notification.body}}</small>
                                     </div>
                                 </div>
                             </a><a class="d-flex" href="#">
-                            {%endfor%}
+                                {%endfor%}
 
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item dropdown dropdown-user"><a class="nav-link dropdown-toggle dropdown-user-link" id="dropdown-user" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <div class="user-nav d-sm-flex d-none"><span class="user-name fw-bolder">Al Nour</span><span class="user-status">{{user.username}}</span></div><span class="avatar"><img class="round" src="{%static 'app-assets//images/avatars/10.png'%}" alt="avatar" height="40" width="40"><span class="avatar-status-online"></span></span>
+                <li class="nav-item dropdown dropdown-user"><a class="nav-link dropdown-toggle dropdown-user-link"
+                        id="dropdown-user" href="#" data-bs-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        <div class="user-nav d-sm-flex d-none"><span class="user-name fw-bolder">Al Nour</span><span
+                                class="user-status">{{user.username}}</span></div><span class="avatar"><img
+                                class="round" src="{%static 'app-assets//images/avatars/10.png'%}" alt="avatar"
+                                height="40" width="40"><span class="avatar-status-online"></span></span>
                     </a>
-                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-user"><a class="dropdown-item" href="page-profile.html"><i class="me-50" data-feather="user"></i> Profile</a><a class="dropdown-item" href="app-email.html"><i class="me-50" data-feather="mail"></i> Inbox</a><a class="dropdown-item" href="app-todo.html"><i class="me-50" data-feather="check-square"></i> Task</a><a class="dropdown-item" href="app-chat.html"><i class="me-50" data-feather="message-square"></i> Chats</a>
-                        <div class="dropdown-divider"></div><a class="dropdown-item" href="page-account-settings-account.html"><i class="me-50" data-feather="settings"></i> Settings</a><a class="dropdown-item" href="page-pricing.html"><i class="me-50" data-feather="credit-card"></i> Pricing</a><a class="dropdown-item" href="page-faq.html"><i class="me-50" data-feather="help-circle"></i> FAQ</a><a class="dropdown-item" href="auth-login-cover.html"><i class="me-50" data-feather="power"></i> Logout</a>
+                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-user"><a
+                            class="dropdown-item" href="page-profile.html"><i class="me-50" data-feather="user"></i>
+                            Profile</a><a class="dropdown-item" href="app-email.html"><i class="me-50"
+                                data-feather="mail"></i> Inbox</a><a class="dropdown-item" href="app-todo.html"><i
+                                class="me-50" data-feather="check-square"></i> Task</a><a class="dropdown-item"
+                            href="app-chat.html"><i class="me-50" data-feather="message-square"></i> Chats</a>
+                        <div class="dropdown-divider"></div><a class="dropdown-item"
+                            href="page-account-settings-account.html"><i class="me-50" data-feather="settings"></i>
+                            Settings</a><a class="dropdown-item" href="page-pricing.html"><i class="me-50"
+                                data-feather="credit-card"></i> Pricing</a><a class="dropdown-item"
+                            href="page-faq.html"><i class="me-50" data-feather="help-circle"></i> FAQ</a><a
+                            class="dropdown-item" href="auth-login-cover.html"><i class="me-50"
+                                data-feather="power"></i> Logout</a>
                     </div>
                 </li>
             </ul>
@@ -106,68 +135,90 @@
         <li class="d-flex align-items-center"><a href="#">
                 <h6 class="section-label mt-75 mb-0">Files</h6>
             </a></li>
-        <li class="auto-suggestion"><a class="d-flex align-items-center justify-content-between w-100" href="app-file-manager.html">
+        <li class="auto-suggestion"><a class="d-flex align-items-center justify-content-between w-100"
+                href="app-file-manager.html">
                 <div class="d-flex">
-                    <div class="me-75"><img src="{%static 'app-assets/images/icons/xls.png'%}" alt="png" height="32"></div>
+                    <div class="me-75"><img src="{%static 'app-assets/images/icons/xls.png'%}" alt="png" height="32">
+                    </div>
                     <div class="search-data">
-                        <p class="search-data-title mb-0">Two new item submitted</p><small class="text-muted">Marketing Manager</small>
+                        <p class="search-data-title mb-0">Two new item submitted</p><small class="text-muted">Marketing
+                            Manager</small>
                     </div>
                 </div><small class="search-data-size me-50 text-muted">&apos;17kb</small>
             </a></li>
-        <li class="auto-suggestion"><a class="d-flex align-items-center justify-content-between w-100" href="app-file-manager.html">
+        <li class="auto-suggestion"><a class="d-flex align-items-center justify-content-between w-100"
+                href="app-file-manager.html">
                 <div class="d-flex">
-                    <div class="me-75"><img src="{%static 'app-assets/images/icons/jpg.png'%}" alt="png" height="32"></div>
+                    <div class="me-75"><img src="{%static 'app-assets/images/icons/jpg.png'%}" alt="png" height="32">
+                    </div>
                     <div class="search-data">
-                        <p class="search-data-title mb-0">52 JPG file Generated</p><small class="text-muted">FontEnd Developer</small>
+                        <p class="search-data-title mb-0">52 JPG file Generated</p><small class="text-muted">FontEnd
+                            Developer</small>
                     </div>
                 </div><small class="search-data-size me-50 text-muted">&apos;11kb</small>
             </a></li>
-        <li class="auto-suggestion"><a class="d-flex align-items-center justify-content-between w-100" href="app-file-manager.html">
+        <li class="auto-suggestion"><a class="d-flex align-items-center justify-content-between w-100"
+                href="app-file-manager.html">
                 <div class="d-flex">
-                    <div class="me-75"><img src="{%static 'app-assets/images/icons/pdf.png'%}" alt="png" height="32"></div>
+                    <div class="me-75"><img src="{%static 'app-assets/images/icons/pdf.png'%}" alt="png" height="32">
+                    </div>
                     <div class="search-data">
-                        <p class="search-data-title mb-0">25 PDF File Uploaded</p><small class="text-muted">Digital Marketing Manager</small>
+                        <p class="search-data-title mb-0">25 PDF File Uploaded</p><small class="text-muted">Digital
+                            Marketing Manager</small>
                     </div>
                 </div><small class="search-data-size me-50 text-muted">&apos;150kb</small>
             </a></li>
-        <li class="auto-suggestion"><a class="d-flex align-items-center justify-content-between w-100" href="app-file-manager.html">
+        <li class="auto-suggestion"><a class="d-flex align-items-center justify-content-between w-100"
+                href="app-file-manager.html">
                 <div class="d-flex">
-                    <div class="me-75"><img src="{%static 'app-assets/images/icons/doc.png'%}" alt="png" height="32"></div>
+                    <div class="me-75"><img src="{%static 'app-assets/images/icons/doc.png'%}" alt="png" height="32">
+                    </div>
                     <div class="search-data">
-                        <p class="search-data-title mb-0">Anna_Strong.doc</p><small class="text-muted">Web Designer</small>
+                        <p class="search-data-title mb-0">Anna_Strong.doc</p><small class="text-muted">Web
+                            Designer</small>
                     </div>
                 </div><small class="search-data-size me-50 text-muted">&apos;256kb</small>
             </a></li>
         <li class="d-flex align-items-center"><a href="#">
                 <h6 class="section-label mt-75 mb-0">Members</h6>
             </a></li>
-        <li class="auto-suggestion"><a class="d-flex align-items-center justify-content-between py-50 w-100" href="app-user-view-account.html">
+        <li class="auto-suggestion"><a class="d-flex align-items-center justify-content-between py-50 w-100"
+                href="app-user-view-account.html">
                 <div class="d-flex align-items-center">
-                    <div class="avatar me-75"><img src="{%static 'app-assets/images/portrait/small/avatar-s-8.jpg'%}" alt="png" height="32"></div>
+                    <div class="avatar me-75"><img src="{%static 'app-assets/images/portrait/small/avatar-s-8.jpg'%}"
+                            alt="png" height="32"></div>
                     <div class="search-data">
                         <p class="search-data-title mb-0">John Doe</p><small class="text-muted">UI designer</small>
                     </div>
                 </div>
             </a></li>
-        <li class="auto-suggestion"><a class="d-flex align-items-center justify-content-between py-50 w-100" href="app-user-view-account.html">
+        <li class="auto-suggestion"><a class="d-flex align-items-center justify-content-between py-50 w-100"
+                href="app-user-view-account.html">
                 <div class="d-flex align-items-center">
-                    <div class="avatar me-75"><img src="{%static 'app-assets/images/portrait/small/avatar-s-1.jpg'%}" alt="png" height="32"></div>
+                    <div class="avatar me-75"><img src="{%static 'app-assets/images/portrait/small/avatar-s-1.jpg'%}"
+                            alt="png" height="32"></div>
                     <div class="search-data">
-                        <p class="search-data-title mb-0">Michal Clark</p><small class="text-muted">FontEnd Developer</small>
+                        <p class="search-data-title mb-0">Michal Clark</p><small class="text-muted">FontEnd
+                            Developer</small>
                     </div>
                 </div>
             </a></li>
-        <li class="auto-suggestion"><a class="d-flex align-items-center justify-content-between py-50 w-100" href="app-user-view-account.html">
+        <li class="auto-suggestion"><a class="d-flex align-items-center justify-content-between py-50 w-100"
+                href="app-user-view-account.html">
                 <div class="d-flex align-items-center">
-                    <div class="avatar me-75"><img src="{%static 'app-assets/images/portrait/small/avatar-s-14.jpg'%}" alt="png" height="32"></div>
+                    <div class="avatar me-75"><img src="{%static 'app-assets/images/portrait/small/avatar-s-14.jpg'%}"
+                            alt="png" height="32"></div>
                     <div class="search-data">
-                        <p class="search-data-title mb-0">Milena Gibson</p><small class="text-muted">Digital Marketing Manager</small>
+                        <p class="search-data-title mb-0">Milena Gibson</p><small class="text-muted">Digital Marketing
+                            Manager</small>
                     </div>
                 </div>
             </a></li>
-        <li class="auto-suggestion"><a class="d-flex align-items-center justify-content-between py-50 w-100" href="app-user-view-account.html">
+        <li class="auto-suggestion"><a class="d-flex align-items-center justify-content-between py-50 w-100"
+                href="app-user-view-account.html">
                 <div class="d-flex align-items-center">
-                    <div class="avatar me-75"><img src="{%static 'app-assets/images/portrait/small/avatar-s-6.jpg'%}" alt="png" height="32"></div>
+                    <div class="avatar me-75"><img src="{%static 'app-assets/images/portrait/small/avatar-s-6.jpg'%}"
+                            alt="png" height="32"></div>
                     <div class="search-data">
                         <p class="search-data-title mb-0">Anna Strong</p><small class="text-muted">Web Designer</small>
                     </div>
@@ -175,8 +226,10 @@
             </a></li>
     </ul>
     <ul class="main-search-list-defaultlist-other-list d-none">
-        <li class="auto-suggestion justify-content-between"><a class="d-flex align-items-center justify-content-between w-100 py-50">
-                <div class="d-flex justify-content-start"><span class="me-75" data-feather="alert-circle"></span><span>No results found.</span></div>
+        <li class="auto-suggestion justify-content-between"><a
+                class="d-flex align-items-center justify-content-between w-100 py-50">
+                <div class="d-flex justify-content-start"><span class="me-75"
+                        data-feather="alert-circle"></span><span>No results found.</span></div>
             </a></li>
     </ul>
     <!-- END: Header-->
@@ -1089,21 +1142,27 @@
                 <!-- Dashboard Ecommerce Starts -->
                 <section id="dashboard-ecommerce">
                     <div class="row match-height">
-                        <!-- Medal Card -->
-                        <div class="col-xl-4 col-md-6 col-12">
-                            <div class="card card-congratulation-medal">
-                                <div class="card-body">
-                                    <h5>{{user.username}}</h5>
-                                    <p class="card-text font-small-3">here are the total earnings</p>
-                                    <h3 class="mb-75 mt-2 pt-50">
-                                        <a href="#">48.9k EGP</a>
-                                    </h3>
-                                    <button type="button" class="btn btn-primary">View Sales</button>
-                                    <img src="{%static 'app-assets/images/illustration/badge.svg'%}" class="congratulation-medal" alt="Medal Pic" />
+                        <!-- Greetings Card starts -->
+                        <div class="col-lg-4 col-md-12 col-sm-12">
+                            <div class="card card-congratulations">
+                                <div class="card-body text-center">
+                                    <img src="{%static '/app-assets/images/elements/decore-left.png'%}" class="congratulations-img-left" alt="card-img-left" />
+                                    <img src="{%static '/app-assets/images/elements/decore-right.png'%}" class="congratulations-img-right" alt="card-img-right" />
+                                    <div class="avatar avatar-xl bg-primary shadow">
+                                        <div class="avatar-content">
+                                            <i data-feather="award" class="font-large-1"></i>
+                                        </div>
+                                    </div>
+                                    <div class="text-center">
+                                        <h1 class="mb-1 text-white">Congratulations {{user.username}},</h1>
+                                        <p class="card-text m-auto w-75">
+                                            You have done <strong>57.6%</strong> more sales today.
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <!--/ Medal Card -->
+                        <!-- Greetings Card starts -->
 
                         <!-- products stats -->
                         <div class="col-xl-8 col-md-6 col-12">
@@ -1116,249 +1175,251 @@
                                 <div class="card-body statistics-body">
                                     <div class="row">
                                         {%for product in products%}
-                                            <div class="col-xl-3 col-sm-6 col-12 mb-2 mb-xl-0">
-                                                <div class="d-flex flex-row">
-                                                    <div class="avatar bg-light-success me-2">
-                                                        <div class="avatar-content">
-                                                            <i data-feather="box" class="avatar-icon"></i>
-                                                        </div>
-                                                    </div>
-                                                    <div class="my-auto">
-                                                        <h4 class="fw-bolder mb-0">{{product.weight}} {{product.product.unit}} </h4>
-                                                        <p class="card-text font-small-3 mb-0">{{product.product.name}}</p>
+                                        <div class="col-xl-3 col-sm-6 col-12 mb-2 mb-xl-0">
+                                            <div class="d-flex flex-row">
+                                                <div class="avatar bg-light-success me-2">
+                                                    <div class="avatar-content">
+                                                        <i data-feather="box" class="avatar-icon"></i>
                                                     </div>
                                                 </div>
+                                                <div class="my-auto">
+                                                    <h4 class="fw-bolder mb-0">{{product.weight}}
+                                                        {{product.product.unit}} </h4>
+                                                    <p class="card-text font-small-3 mb-0">{{product.product.name}}</p>
+                                                </div>
                                             </div>
-                                        {%endfor%}         
+                                        </div>
+                                        {%endfor%}
                                     </div>
-                                    <div class="card-header">
+                                    <div class="card-header" style="padding: 0 !important;">
                                         <h4 class="card-title">Raw Materials</h4>
                                         <div class="d-flex align-items-center">
                                         </div>
                                     </div>
                                     {%for material in raw_materials%}
-                                        <div class="col-xl-3 col-sm-6 col-12 mb-2 mb-xl-0">
-                                            <div class="d-flex flex-row">
-                                                {%if material.weight >= material.minimum_ammount %}
-                                                <div class="avatar bg-light-success me-2">
+                                    <div class="col-xl-3 col-sm-6 col-12 mb-2 mb-xl-0">
+                                        <div class="d-flex flex-row">
+                                            {%if material.weight >= material.minimum_ammount %}
+                                            <div class="avatar bg-light-success me-2">
                                                 {%endif%}
                                                 {%if material.weight < material.minimum_ammount %}
                                                 <div class="avatar bg-light-danger me-2">
-                                                {%endif%}
+                                                    {%endif%}
                                                     <div class="avatar-content">
                                                         <i data-feather="box" class="avatar-icon"></i>
                                                     </div>
                                                 </div>
-                                                    <div class="my-auto">
-                                                        <h4 class="fw-bolder mb-0">{{material.weight}} {{material.unit}} </h4>
-                                                        <p class="card-text font-small-3 mb-0">{{material.name}}</p>
+                                                <div class="my-auto">
+                                                    <h4 class="fw-bolder mb-0">{{material.weight}} {{material.unit}}
+                                                    </h4>
+                                                    <p class="card-text font-small-3 mb-0">{{material.name}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {%endfor%}
+                                </div>
+                            </div>
+                            <!--/ products stats -->
+                        </div>
+
+                        <div class="row match-height">
+                            <div class="col-lg-4 col-12">
+                                <div class="row match-height">
+                                    <!-- Bar Chart - Orders -->
+                                    <div class="col-lg-6 col-md-3 col-6">
+                                        <div class="card">
+                                            <div class="card-body pb-50">
+                                                <h6>Orders</h6>
+                                                <h2 class="fw-bolder mb-1">{{all_orders_count}}</h2>
+                                                <div id="statistics-order-chart"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--/ Bar Chart - Orders -->
+
+                                    <!-- Line Chart - Profit -->
+                                    <div class="col-lg-6 col-md-3 col-6">
+                                        <div class="card card-tiny-line-stats">
+                                            <div class="card-body pb-50">
+                                                <h6>Profit</h6>
+                                                <h2 class="fw-bolder mb-1">{{invoices_total}}</h2>
+                                                <div id="statistics-profit-chart"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--/ Line Chart - Profit -->
+
+                                    <!-- Earnings Card -->
+                                    <div class="col-lg-12 col-md-6 col-12">
+                                        <div class="card earnings-card">
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <h4 class="card-title mb-1">Earnings</h4>
+                                                        <div class="font-small-2">This Month</div>
+                                                        <h5 class="mb-1">$4055.56</h5>
+                                                        <p class="card-text text-muted font-small-2">
+                                                            <span class="fw-bolder">68.2%</span><span> more earnings
+                                                                than last month.</span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div id="earnings-chart"></div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    {%endfor%}
+                                    </div>
+                                    <!--/ Earnings Card -->
+                                </div>
                             </div>
+                            <!-- Revenue Report Card -->
+                            <div class="col-lg-8 col-12">
+                                <div class="card">
+                                    <div
+                                        class="card-header d-flex justify-content-between align-items-sm-center align-items-start flex-sm-row flex-column">
+                                        <div class="header-left">
+                                            <p class="card-subtitle text-muted mb-25">Total Expenses</p>
+                                            <h4 class="card-title">{{graph_total_expenses}} EGP</h4>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <canvas class="horizontal-bar-chart-ex chartjs" data-height="400"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/ Revenue Report Card -->
                         </div>
-                        <!--/ products stats -->
 
-
-
-
-
-                    </div>
-
-                    <div class="row match-height">
-                        <div class="col-lg-4 col-12">
-                            <div class="row match-height">
-                                <!-- Bar Chart - Orders -->
-                                <div class="col-lg-6 col-md-3 col-6">
-                                    <div class="card">
-                                        <div class="card-body pb-50">
-                                            <h6>Orders</h6>
-                                            <h2 class="fw-bolder mb-1">{{all_orders_count}}</h2>
-                                            <div id="statistics-order-chart"></div>
-                                        </div>
+                        <div class="row match-height">
+                            <!-- Device Session Card -->
+                            <div class="col-lg-4 col-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="card-title">Sessions By Device</h4>
                                     </div>
-                                </div>
-                                <!--/ Bar Chart - Orders -->
-
-                                <!-- Line Chart - Profit -->
-                                <div class="col-lg-6 col-md-3 col-6">
-                                    <div class="card card-tiny-line-stats">
-                                        <div class="card-body pb-50">
-                                            <h6>Profit</h6>
-                                            <h2 class="fw-bolder mb-1">{{invoices_total}}</h2>
-                                            <div id="statistics-profit-chart"></div>
+                                    <div class="card-body">
+                                        <canvas class="doughnut-chart-ex chartjs" data-height="275"></canvas>
+                                        <div class="d-flex justify-content-between mt-3 mb-1">
+                                            <div class="d-flex align-items-center">
+                                                <i data-feather="monitor" class="font-medium-2 text-primary"></i>
+                                                <span class="fw-bold ms-75 me-25">Desktop</span>
+                                                <span>- 80%</span>
+                                            </div>
+                                            <div>
+                                                <span>2%</span>
+                                                <i data-feather="arrow-up" class="text-success"></i>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <!--/ Line Chart - Profit -->
-
-                                <!-- Earnings Card -->
-                                <div class="col-lg-12 col-md-6 col-12">
-                                    <div class="card earnings-card">
-                                        <div class="card-body">
-                                            <div class="row">
-                                                <div class="col-6">
-                                                    <h4 class="card-title mb-1">Earnings</h4>
-                                                    <div class="font-small-2">This Month</div>
-                                                    <h5 class="mb-1">$4055.56</h5>
-                                                    <p class="card-text text-muted font-small-2">
-                                                        <span class="fw-bolder">68.2%</span><span> more earnings than last month.</span>
-                                                    </p>
-                                                </div>
-                                                <div class="col-6">
-                                                    <div id="earnings-chart"></div>
-                                                </div>
+                                        <div class="d-flex justify-content-between mb-1">
+                                            <div class="d-flex align-items-center">
+                                                <i data-feather="tablet" class="font-medium-2 text-warning"></i>
+                                                <span class="fw-bold ms-75 me-25">Mobile</span>
+                                                <span>- 10%</span>
+                                            </div>
+                                            <div>
+                                                <span>8%</span>
+                                                <i data-feather="arrow-up" class="text-success"></i>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-between">
+                                            <div class="d-flex align-items-center">
+                                                <i data-feather="tablet" class="font-medium-2 text-success"></i>
+                                                <span class="fw-bold ms-75 me-25">Tablet</span>
+                                                <span>- 10%</span>
+                                            </div>
+                                            <div>
+                                                <span>-5%</span>
+                                                <i data-feather="arrow-down" class="text-danger"></i>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <!--/ Earnings Card -->
                             </div>
-                        </div>
-                        <!-- Revenue Report Card -->
-                        <div class="col-lg-8 col-12">
-                            <div class="card">
-                                <div class="card-header d-flex justify-content-between align-items-sm-center align-items-start flex-sm-row flex-column">
-                                    <div class="header-left">
-                                        <p class="card-subtitle text-muted mb-25">Total Expenses</p>
-                                        <h4 class="card-title">{{graph_total_expenses}} EGP</h4>
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <canvas class="horizontal-bar-chart-ex chartjs" data-height="400"></canvas>
-                                </div>
-                            </div>
-                        </div>
-                        <!--/ Revenue Report Card -->
-                    </div>
+                            <!--/ Device Session Card -->
 
-                    <div class="row match-height">
-                        <!-- Device Session Card -->
-                        <div class="col-lg-4 col-12">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h4 class="card-title">Sessions By Device</h4>
-                                </div>
-                                <div class="card-body">
-                                    <canvas class="doughnut-chart-ex chartjs" data-height="275"></canvas>
-                                    <div class="d-flex justify-content-between mt-3 mb-1">
-                                        <div class="d-flex align-items-center">
-                                            <i data-feather="monitor" class="font-medium-2 text-primary"></i>
-                                            <span class="fw-bold ms-75 me-25">Desktop</span>
-                                            <span>- 80%</span>
-                                        </div>
-                                        <div>
-                                            <span>2%</span>
-                                            <i data-feather="arrow-up" class="text-success"></i>
-                                        </div>
+                            <!-- Goal Overview Card -->
+                            <div class="col-lg-4 col-md-6 col-12">
+                                <div class="card">
+                                    <div class="card-header d-flex justify-content-between align-items-center">
+                                        <h4 class="card-title">Goal Overview</h4>
+                                        <i data-feather="help-circle"
+                                            class="font-medium-3 text-muted cursor-pointer"></i>
                                     </div>
-                                    <div class="d-flex justify-content-between mb-1">
-                                        <div class="d-flex align-items-center">
-                                            <i data-feather="tablet" class="font-medium-2 text-warning"></i>
-                                            <span class="fw-bold ms-75 me-25">Mobile</span>
-                                            <span>- 10%</span>
-                                        </div>
-                                        <div>
-                                            <span>8%</span>
-                                            <i data-feather="arrow-up" class="text-success"></i>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex justify-content-between">
-                                        <div class="d-flex align-items-center">
-                                            <i data-feather="tablet" class="font-medium-2 text-success"></i>
-                                            <span class="fw-bold ms-75 me-25">Tablet</span>
-                                            <span>- 10%</span>
-                                        </div>
-                                        <div>
-                                            <span>-5%</span>
-                                            <i data-feather="arrow-down" class="text-danger"></i>
+                                    <div class="card-body p-0">
+                                        <div id="goal-overview-radial-bar-chart" class="my-2"></div>
+                                        <div class="row border-top text-center mx-0">
+                                            <div class="col-6 border-end py-1">
+                                                <p class="card-text text-muted mb-0">Completed</p>
+                                                <h3 class="fw-bolder mb-0">786,617</h3>
+                                            </div>
+                                            <div class="col-6 py-1">
+                                                <p class="card-text text-muted mb-0">In Progress</p>
+                                                <h3 class="fw-bolder mb-0">13,561</h3>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <!--/ Device Session Card -->
+                            <!--/ Goal Overview Card -->
 
-                        <!-- Goal Overview Card -->
-                        <div class="col-lg-4 col-md-6 col-12">
-                            <div class="card">
-                                <div class="card-header d-flex justify-content-between align-items-center">
-                                    <h4 class="card-title">Goal Overview</h4>
-                                    <i data-feather="help-circle" class="font-medium-3 text-muted cursor-pointer"></i>
-                                </div>
-                                <div class="card-body p-0">
-                                    <div id="goal-overview-radial-bar-chart" class="my-2"></div>
-                                    <div class="row border-top text-center mx-0">
-                                        <div class="col-6 border-end py-1">
-                                            <p class="card-text text-muted mb-0">Completed</p>
-                                            <h3 class="fw-bolder mb-0">786,617</h3>
-                                        </div>
-                                        <div class="col-6 py-1">
-                                            <p class="card-text text-muted mb-0">In Progress</p>
-                                            <h3 class="fw-bolder mb-0">13,561</h3>
+                            <!-- Transaction Card -->
+                            <div class="col-lg-4 col-md-6 col-12">
+                                <div class="card card-transaction">
+                                    <div class="card-header">
+                                        <h4 class="card-title">Expenses</h4>
+                                        <div class="dropdown chart-dropdown">
+                                            <i data-feather="more-vertical" class="font-medium-3 cursor-pointer"
+                                                data-bs-toggle="dropdown"></i>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--/ Goal Overview Card -->
-
-                        <!-- Transaction Card -->
-                        <div class="col-lg-4 col-md-6 col-12">
-                            <div class="card card-transaction">
-                                <div class="card-header">
-                                    <h4 class="card-title">Expenses</h4>
-                                    <div class="dropdown chart-dropdown">
-                                        <i data-feather="more-vertical" class="font-medium-3 cursor-pointer" data-bs-toggle="dropdown"></i>
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    {%for expense in all_expenses%}
-                                    <div class="transaction-item">
-                                        <div class="d-flex">
-                                            <div class="avatar bg-light-primary rounded float-start">
-                                                <div class="avatar-content">
-                                                    <i data-feather="pocket" class="avatar-icon font-medium-3"></i>
+                                    <div class="card-body">
+                                        {%for expense in all_expenses%}
+                                        <div class="transaction-item">
+                                            <div class="d-flex">
+                                                <div class="avatar bg-light-primary rounded float-start">
+                                                    <div class="avatar-content">
+                                                        <i data-feather="pocket" class="avatar-icon font-medium-3"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="transaction-percentage">
+                                                    <h6 class="transaction-title">{{expense.category.category_name}}
+                                                    </h6>
+                                                    <small>{{expense.description}}</small>
                                                 </div>
                                             </div>
-                                            <div class="transaction-percentage">
-                                                <h6 class="transaction-title">{{expense.category.category_name}}</h6>
-                                                <small>{{expense.description}}</small>
-                                            </div>
+                                            <div class="fw-bolder text-danger">-{{expense.ammount}} EGP</div>
                                         </div>
-                                        <div class="fw-bolder text-danger">-{{expense.ammount}} EGP</div>
-                                    </div>
-                                    {%endfor%}
-                                    <!-- fasel hena -->
-                                    {%for expense in all_loader_expenses%}
-                                    <div class="transaction-item">
-                                        <div class="d-flex">
-                                            <div class="avatar bg-light-primary rounded float-start">
-                                                <div class="avatar-content">
-                                                    <i data-feather="pocket" class="avatar-icon font-medium-3"></i>
+                                        {%endfor%}
+                                        <!-- fasel hena -->
+                                        {%for expense in all_loader_expenses%}
+                                        <div class="transaction-item">
+                                            <div class="d-flex">
+                                                <div class="avatar bg-light-primary rounded float-start">
+                                                    <div class="avatar-content">
+                                                        <i data-feather="pocket" class="avatar-icon font-medium-3"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="transaction-percentage">
+                                                    <h6 class="transaction-title">load on {{expense.date}}</h6>
+                                                    {%if expense.load%}
+                                                    <small>Load</small>
+                                                    {%endif%}
+                                                    {%if expense.unload%}
+                                                    <small>Unload</small>
+                                                    {%endif%}
                                                 </div>
                                             </div>
-                                            <div class="transaction-percentage">
-                                                <h6 class="transaction-title">load on {{expense.date}}</h6>
-                                                {%if expense.load%}
-                                                <small>Load</small>
-                                                {%endif%}
-                                                {%if expense.unload%}
-                                                <small>Unload</small>
-                                                {%endif%}
-                                            </div>
+                                            <div class="fw-bolder text-danger">-{{expense.ammount}} EGP</div>
                                         </div>
-                                        <div class="fw-bolder text-danger">-{{expense.ammount}} EGP</div>
-                                    </div>
-                                    {%endfor%}
+                                        {%endfor%}
 
+                                    </div>
                                 </div>
                             </div>
+                            <!--/ Transaction Card -->
                         </div>
-                        <!--/ Transaction Card -->
-                    </div>
 
                 </section>
                 <!-- Dashboard Ecommerce ends -->
@@ -1373,7 +1434,10 @@
 
     <!-- BEGIN: Footer-->
     <footer class="footer footer-static footer-light">
-        <p class="clearfix mb-0"><span class="float-md-start d-block d-md-inline-block mt-25">COPYRIGHT &copy; 2021<a class="ms-25" href="https://1.envato.market/pixinvent_portfolio" target="_blank">Pixinvent</a><span class="d-none d-sm-inline-block">, All rights Reserved</span></span><span class="float-md-end d-none d-md-block">Hand-crafted & Made with<i data-feather="heart"></i></span></p>
+        <p class="clearfix mb-0"><span class="float-md-start d-block d-md-inline-block mt-25">COPYRIGHT &copy; 2021<a
+                    class="ms-25" href="https://1.envato.market/pixinvent_portfolio" target="_blank">Pixinvent</a><span
+                    class="d-none d-sm-inline-block">, All rights Reserved</span></span><span
+                class="float-md-end d-none d-md-block">Hand-crafted & Made with<i data-feather="heart"></i></span></p>
     </footer>
     <button class="btn btn-primary btn-icon scroll-top" type="button"><i data-feather="arrow-up"></i></button>
     <!-- END: Footer-->
@@ -1397,7 +1461,10 @@
 
     <!-- BEGIN: Page JS-->
     <script src="{%static 'app-assets/js/scripts/pages/dashboard-ecommerce.js'%}"></script>
-    <!-- <script src="{%static 'app-assets/js/scripts/charts/chart-chartjs.js'%}"></script> -->
+    <script type="text/javascript">
+        var expensesValues = {{values}}
+    </script>
+    <script type="text/javascript" src="{%static 'app-assets/js/scripts/charts/chart-chartjs.js'%}"></script>
 
     <!-- END: Page JS-->
 
@@ -1410,406 +1477,6 @@
                 });
             }
         })
-        $(window).on('load', function () {
-            'use strict';
-
-            var chartWrapper = $('.chartjs'),
-                horizontalBarChartEx = $('.horizontal-bar-chart-ex'),
-                lineChartEx = $('.line-chart-ex'),
-                doughnutChartEx = $('.doughnut-chart-ex');
-
-            // Color Variables
-            var primaryColorShade = '#836AF9',
-                yellowColor = '#ffe800',
-                successColorShade = '#28dac6',
-                warningColorShade = '#ffe802',
-                warningLightColor = '#FDAC34',
-                infoColorShade = '#299AFF',
-                greyColor = '#4F5D70',
-                blueColor = '#2c9aff',
-                blueLightColor = '#84D0FF',
-                greyLightColor = '#EDF1F4',
-                tooltipShadow = 'rgba(0, 0, 0, 0.25)',
-                lineChartPrimary = '#666ee8',
-                lineChartDanger = '#ff4961',
-                labelColor = '#6e6b7b',
-                grid_line_color = 'rgba(200, 200, 200, 0.2)'; // RGBA color helps in dark layout
-
-            // Detect Dark Layout
-            if ($('html').hasClass('dark-layout')) {
-                labelColor = '#b4b7bd';
-            }
-
-            // Wrap charts with div of height according to their data-height
-            if (chartWrapper.length) {
-                chartWrapper.each(function () {
-                    $(this).wrap($('<div style="height:' + this.getAttribute('data-height') +
-                        'px"></div>'));
-                });
-            }
-
-            //------------ Goal Overview Chart ------------
-            //---------------------------------------------
-            var $barColor = '#f3f3f3';
-            var $trackBgColor = '#EBEBEB';
-            var $textMutedColor = '#b9b9c3';
-            var $budgetStrokeColor2 = '#dcdae3';
-            var $goalStrokeColor2 = '#51e5a8';
-            var $strokeColor = '#ebe9f1';
-            var $textHeadingColor = '#5e5873';
-            var $earningsStrokeColor2 = '#28c76f66';
-            var $earningsStrokeColor3 = '#28c76f33';
-
-            var $goalOverviewChart = document.querySelector('#goal-overview-radial-bar-chart');
-
-            var goalOverviewChartOptions;
-
-          
-            var goalOverviewChart;
-            var isRtl = $('html').attr('data-textdirection') === 'rtl';
-            goalOverviewChartOptions = {
-                chart: {
-                    height: 245,
-                    type: 'radialBar',
-                    sparkline: {
-                        enabled: true
-                    },
-                    dropShadow: {
-                        enabled: true,
-                        blur: 3,
-                        left: 1,
-                        top: 1,
-                        opacity: 0.1
-                    }
-                },
-                colors: [$goalStrokeColor2],
-                plotOptions: {
-                    radialBar: {
-                        offsetY: -10,
-                        startAngle: -150,
-                        endAngle: 150,
-                        hollow: {
-                            size: '77%'
-                        },
-                        track: {
-                            background: $strokeColor,
-                            strokeWidth: '50%'
-                        },
-                        dataLabels: {
-                            name: {
-                                show: false
-                            },
-                            value: {
-                                color: $textHeadingColor,
-                                fontSize: '2.86rem',
-                                fontWeight: '600'
-                            }
-                        }
-                    }
-                },
-                fill: {
-                    type: 'gradient',
-                    gradient: {
-                        shade: 'dark',
-                        type: 'horizontal',
-                        shadeIntensity: 0.5,
-                        gradientToColors: [window.colors.solid.success],
-                        inverseColors: true,
-                        opacityFrom: 1,
-                        opacityTo: 1,
-                        stops: [0, 100]
-                    }
-                },
-                series: [83],
-                stroke: {
-                    lineCap: 'round'
-                },
-                grid: {
-                    padding: {
-                        bottom: 30
-                    }
-                }
-            };
-            goalOverviewChart = new ApexCharts($goalOverviewChart, goalOverviewChartOptions);
-            goalOverviewChart.render();
-
-            // Horizontal Bar Chart
-            // --------------------------------------------------------------------
-            if (horizontalBarChartEx.length) {
-                new Chart(horizontalBarChartEx, {
-                    type: 'horizontalBar',
-                    options: {
-                        elements: {
-                            rectangle: {
-                                borderWidth: 2,
-                                borderSkipped: 'right'
-                            }
-                        },
-                        tooltips: {
-                            // Updated default tooltip UI
-                            shadowOffsetX: 1,
-                            shadowOffsetY: 1,
-                            shadowBlur: 8,
-                            shadowColor: tooltipShadow,
-                            backgroundColor: window.colors.solid.white,
-                            titleFontColor: window.colors.solid.black,
-                            bodyFontColor: window.colors.solid.black
-                        },
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        responsiveAnimationDuration: 500,
-                        legend: {
-                            display: false
-                        },
-                        layout: {
-                            padding: {
-                                bottom: -30,
-                                left: -25
-                            }
-                        },
-                        scales: {
-                            xAxes: [{
-                                display: true,
-                                gridLines: {
-                                    zeroLineColor: grid_line_color,
-                                    borderColor: 'transparent',
-                                    color: grid_line_color
-                                },
-                                scaleLabel: {
-                                    display: true
-                                },
-                                ticks: {
-                                    min: 0,
-                                    fontColor: labelColor
-                                }
-                            }],
-                            yAxes: [{
-                                display: true,
-                                gridLines: {
-                                    display: false
-                                },
-                                scaleLabel: {
-                                    display: true
-                                },
-                                ticks: {
-                                    fontColor: labelColor
-                                }
-                            }]
-                        }
-                    },
-                    data: {
-                        labels: ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
-                        datasets: [
-                        {
-                            data: {{values}},
-                            barThickness: 15,
-                            backgroundColor: window.colors.solid.info,
-                            borderColor: 'transparent'
-                        }
-                        ]
-                    }
-                    });
-                }
-
-            // Line Chart
-            // --------------------------------------------------------------------
-            if (lineChartEx.length) {
-                var lineExample = new Chart(lineChartEx, {
-                    type: 'line',
-                    plugins: [
-                        // to add spacing between legends and chart
-                        {
-                            beforeInit: function (chart) {
-                                chart.legend.afterFit = function () {
-                                    this.height += 20;
-                                };
-                            }
-                        }
-                    ],
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        backgroundColor: false,
-                        hover: {
-                            mode: 'label'
-                        },
-                        tooltips: {
-                            // Updated default tooltip UI
-                            shadowOffsetX: 1,
-                            shadowOffsetY: 1,
-                            shadowBlur: 8,
-                            shadowColor: tooltipShadow,
-                            backgroundColor: window.colors.solid.white,
-                            titleFontColor: window.colors.solid.black,
-                            bodyFontColor: window.colors.solid.black
-                        },
-                        layout: {
-                            padding: {
-                                top: -15,
-                                bottom: -25,
-                                left: -15
-                            }
-                        },
-                        scales: {
-                            xAxes: [{
-                                display: true,
-                                scaleLabel: {
-                                    display: true
-                                },
-                                gridLines: {
-                                    display: true,
-                                    color: grid_line_color,
-                                    zeroLineColor: grid_line_color
-                                },
-                                ticks: {
-                                    fontColor: labelColor
-                                }
-                            }],
-                            yAxes: [{
-                                display: true,
-                                scaleLabel: {
-                                    display: true
-                                },
-                                ticks: {
-                                    stepSize: 100,
-                                    min: 0,
-                                    max: 400,
-                                    fontColor: labelColor
-                                },
-                                gridLines: {
-                                    display: true,
-                                    color: grid_line_color,
-                                    zeroLineColor: grid_line_color
-                                }
-                            }]
-                        },
-                        legend: {
-                            position: 'top',
-                            align: 'start',
-                            labels: {
-                                usePointStyle: true,
-                                padding: 25,
-                                boxWidth: 9
-                            }
-                        }
-                    },
-                    data: {
-                        labels: [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140],
-                        datasets: [{
-                                data: [80, 150, 180, 270, 210, 160, 160, 202, 265, 210, 270, 255,
-                                    290, 360, 375
-                                ],
-                                label: 'Europe',
-                                borderColor: lineChartDanger,
-                                lineTension: 0.5,
-                                pointStyle: 'circle',
-                                backgroundColor: lineChartDanger,
-                                fill: false,
-                                pointRadius: 1,
-                                pointHoverRadius: 5,
-                                pointHoverBorderWidth: 5,
-                                pointBorderColor: 'transparent',
-                                pointHoverBorderColor: window.colors.solid.white,
-                                pointHoverBackgroundColor: lineChartDanger,
-                                pointShadowOffsetX: 1,
-                                pointShadowOffsetY: 1,
-                                pointShadowBlur: 5,
-                                pointShadowColor: tooltipShadow
-                            },
-                            {
-                                data: [80, 125, 105, 130, 215, 195, 140, 160, 230, 300, 220, 170,
-                                    210, 200, 280
-                                ],
-                                label: 'Asia',
-                                borderColor: lineChartPrimary,
-                                lineTension: 0.5,
-                                pointStyle: 'circle',
-                                backgroundColor: lineChartPrimary,
-                                fill: false,
-                                pointRadius: 1,
-                                pointHoverRadius: 5,
-                                pointHoverBorderWidth: 5,
-                                pointBorderColor: 'transparent',
-                                pointHoverBorderColor: window.colors.solid.white,
-                                pointHoverBackgroundColor: lineChartPrimary,
-                                pointShadowOffsetX: 1,
-                                pointShadowOffsetY: 1,
-                                pointShadowBlur: 5,
-                                pointShadowColor: tooltipShadow
-                            },
-                            {
-                                data: [80, 99, 82, 90, 115, 115, 74, 75, 130, 155, 125, 90, 140,
-                                    130, 180
-                                ],
-                                label: 'Africa',
-                                borderColor: warningColorShade,
-                                lineTension: 0.5,
-                                pointStyle: 'circle',
-                                backgroundColor: warningColorShade,
-                                fill: false,
-                                pointRadius: 1,
-                                pointHoverRadius: 5,
-                                pointHoverBorderWidth: 5,
-                                pointBorderColor: 'transparent',
-                                pointHoverBorderColor: window.colors.solid.white,
-                                pointHoverBackgroundColor: warningColorShade,
-                                pointShadowOffsetX: 1,
-                                pointShadowOffsetY: 1,
-                                pointShadowBlur: 5,
-                                pointShadowColor: tooltipShadow
-                            }
-                        ]
-                    }
-                });
-            }
-
-            // Doughnut Chart
-            // --------------------------------------------------------------------
-            if (doughnutChartEx.length) {
-                var doughnutExample = new Chart(doughnutChartEx, {
-                    type: 'doughnut',
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        responsiveAnimationDuration: 500,
-                        cutoutPercentage: 60,
-                        legend: {
-                            display: false
-                        },
-                        tooltips: {
-                            callbacks: {
-                                label: function (tooltipItem, data) {
-                                    var label = data.datasets[0].labels[tooltipItem.index] || '',
-                                        value = data.datasets[0].data[tooltipItem.index];
-                                    var output = ' ' + label + ' : ' + value + ' %';
-                                    return output;
-                                }
-                            },
-                            // Updated default tooltip UI
-                            shadowOffsetX: 1,
-                            shadowOffsetY: 1,
-                            shadowBlur: 8,
-                            shadowColor: tooltipShadow,
-                            backgroundColor: window.colors.solid.white,
-                            titleFontColor: window.colors.solid.black,
-                            bodyFontColor: window.colors.solid.black
-                        }
-                    },
-                    data: {
-                        datasets: [{
-                            labels: ['Tablet', 'Mobile', 'Desktop'],
-                            data: [10, 10, 80],
-                            backgroundColor: [successColorShade, warningLightColor, window
-                                .colors.solid.primary
-                            ],
-                            borderWidth: 0,
-                            pointStyle: 'rectRounded'
-                        }]
-                    }
-                });
-            }
-            //---------------------------------------------
-        });
     </script>
 </body>
 <!-- END: Body-->

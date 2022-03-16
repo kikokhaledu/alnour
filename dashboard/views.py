@@ -77,9 +77,10 @@ def home_page(request):
 			pass
 	###########################start expenses graph #############
 	values = [0,0,0,0,0,0,0]
+	print(all_expenses)
 	for expense in all_expenses:
 		day = expense.date.weekday()
-		day = day+1
+		day = day
 		value = int(expense.ammount)+values[day]
 		values[day] = value
 	graph_total_expenses = 0

@@ -48,9 +48,9 @@ $(function () {
       form.addEventListener('submit', function (event) {
         if (form.checkValidity() === false) {
           form.classList.add('invalid');
+          event.preventDefault();
         }
         form.classList.add('was-validated');
-        event.preventDefault();
         // if (inputGroupValidation) {
         //   inputGroupValidation(form);
         // }

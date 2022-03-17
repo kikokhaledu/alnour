@@ -34,4 +34,4 @@ class workers (models.Model):
 	class Meta:
 		verbose_name_plural = 'workers'
 	def __str__(self):
-		return self.name
+		return self.name + str(self.id)

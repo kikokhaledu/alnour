@@ -372,7 +372,7 @@ $(window).on('load', function () {
         stops: [0, 100]
       }
     },
-    series: [83],
+    series: [orders_percentage],
     stroke: {
       lineCap: 'round'
     },

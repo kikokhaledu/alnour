@@ -8,6 +8,7 @@ from django.contrib.auth import views as auth_views
 urlpatterns = [
 	path('',views.loginpage,name = 'default_login'),#home
     path('home_page/',views.home_page, name= 'home_page'),
+    path('mark_notfication_seen/',views.mark_notfication_seen, name= 'mark_notfication_seen'),
     path('logoutpage/', views.logoutpage , name = 'logoutpage'),    
     # path('PasswordChange/', views.PasswordChange , name = 'PasswordChange'),    
 ]

@@ -48,6 +48,10 @@ def home_page(request):
 	products = finished_products.objects.all()
 	raw_materials = raw_material.objects.all()
 	all_orders = orders.objects.all()
+	completed_orders = orders.objects.filter(completed = True)
+	completed_orders_count = completed_orders.count()
+	uncompleted_orders = orders.objects.filter(completed = False)
+	uncompleted_orders_count = uncompleted_orders.count()
 	all_orders_count = all_orders.count()
 	my_notifications = notifications.objects.filter(user = None)|notifications.objects.filter(user = user)
 	all_expenses = expenses.objects.filter(date__iso_year=year, date__week=week).order_by('date')
@@ -87,7 +91,6 @@ def home_page(request):
 	for value in values:
 		graph_total_expenses += value
 	########################### end expenses graph ###############
-	
 	context = {
 		'user':user,
 		'products':products,
@@ -102,9 +105,21 @@ def home_page(request):
 		'all_pos':all_pos,
 		'values':values,
 		'graph_total_expenses':graph_total_expenses,
+		'completed_orders_count':completed_orders_count,
+		'uncompleted_orders_count':uncompleted_orders_count,
+		'percentage':completed_orders_count/all_orders_count*100
 	}
 	return render (request,'dashboard/index.html',context)
 #################################################### logout##############################################
 def logoutpage(request):
 	logout(request)
 	return redirect('default_login')
+
+
+def mark_notfication_seen(request):
+	user = request.user
+	my_notifications = notifications.objects.filter(user = None)|notifications.objects.filter(user = user)
+	for notification in my_notifications:
+		notification.seen = True
+		notification.save()
+	return redirect('home_page')

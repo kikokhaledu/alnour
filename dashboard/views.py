@@ -91,6 +91,10 @@ def home_page(request):
 	for value in values:
 		graph_total_expenses += value
 	########################### end expenses graph ###############
+	try:
+		percentage = completed_orders_count/all_orders_count*100
+	except:
+		percentage = 0
 	context = {
 		'user':user,
 		'products':products,
@@ -107,7 +111,7 @@ def home_page(request):
 		'graph_total_expenses':graph_total_expenses,
 		'completed_orders_count':completed_orders_count,
 		'uncompleted_orders_count':uncompleted_orders_count,
-		'percentage':completed_orders_count/all_orders_count*100
+		'percentage': percentage
 	}
 	return render (request,'dashboard/index.html',context)
 #################################################### logout##############################################

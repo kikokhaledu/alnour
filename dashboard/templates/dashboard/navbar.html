@@ -1,0 +1,119 @@
+{% with url_name=request.resolver_match.url_name %}
+<!-- BEGIN: Main Menu-->
+<div class="horizontal-menu-wrapper">
+    <div class="header-navbar navbar-expand-sm navbar navbar-horizontal floating-nav navbar-light navbar-shadow menu-border container-xxl"
+        role="navigation" data-menu="menu-wrapper" data-menu-type="floating-nav">
+        <div class="navbar-header">
+            <ul class="nav navbar-nav flex-row">
+                <li class="nav-item me-auto"><a class="navbar-brand"
+                        href="{% url 'home_page' %}"><span class="brand-logo">
+                            <img src="{%static 'app-assets/images/logo/alnour_logo2.png'%}" alt="">
+                    </a></li>
+                <li class="nav-item nav-toggle"><a class="nav-link modern-nav-toggle pe-0" data-bs-toggle="collapse"><i
+                            class="d-block d-xl-none text-primary toggle-icon font-medium-4" data-feather="x"></i></a>
+                </li>
+            </ul>
+        </div>
+        <div class="shadow-bottom"></div>
+        <!-- Horizontal menu content-->
+        <div class="navbar-container main-menu-content" data-menu="menu-container">
+            <!-- include ../../../includes/mixins-->
+            <ul class="nav navbar-nav" id="main-menu-navigation" data-menu="menu-navigation">
+                <li class="dropdown nav-item" data-menu="dropdown"><a
+                        class="dropdown-toggle nav-link d-flex align-items-center" href="javascript:void(0)"
+                        data-bs-toggle="dropdown"><i data-feather="home"></i><span
+                            data-i18n="Dashboards">Dashboards</span></a>
+                    <ul class="dropdown-menu" data-bs-popper="none">
+                        <li class="{% if url_name == 'home_page' %}active{% endif %}" data-menu="">
+                            <a class="dropdown-item d-flex align-items-center"
+                                href="{% url 'home_page' %}" data-bs-toggle="" data-i18n="Analytics"><i
+                                    data-feather="home"></i><span data-i18n="Dashboard">Dashboard</span></a>
+                        </li>
+                        <li data-menu=""><a class="dropdown-item d-flex align-items-center"
+                                href="dashboard-analytics.html" data-bs-toggle="" data-i18n="Analytics"><i
+                                    data-feather="activity"></i><span data-i18n="Orders">Orders</span></a>
+                        </li>
+                        <li data-menu=""><a class="dropdown-item d-flex align-items-center"
+                                href="dashboard-ecommerce.html" data-bs-toggle="" data-i18n="eCommerce"><i
+                                    data-feather="shopping-cart"></i><span data-i18n="Packed Rubber Shipments">Packed
+                                    Rubber Shipments</span></a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown nav-item" data-menu="dropdown"><a
+                        class="dropdown-toggle nav-link d-flex align-items-center" href="javascript:void(0)" data-bs-toggle="dropdown"><i
+                            data-feather="dollar-sign"></i><span data-i18n="Finance">Finance</span></a>
+                    <ul class="dropdown-menu" data-bs-popper="none">
+                        <li data-menu=""><a class="dropdown-item d-flex align-items-center" href="app-email.html"
+                                data-bs-toggle="" data-i18n="Email"><i data-feather="external-link"></i><span
+                                    data-i18n="Expeses">Expeses</span></a>
+                        </li>
+                        <li data-menu=""><a class="dropdown-item d-flex align-items-center" href="app-chat.html"
+                                data-bs-toggle="" data-i18n="Chat"><i data-feather="file-text"></i><span
+                                    data-i18n="Invoices">Invoices</span></a>
+                        </li>
+                        <li data-menu=""><a class="dropdown-item d-flex align-items-center"
+                                href="app-todo.html" data-bs-toggle="" data-i18n="Todo"><i
+                                    data-feather="file-minus"></i><span data-i18n="Loader Expeses">Loader
+                                    Expeses</span></a>
+                        </li>
+                        <li data-menu=""><a class="dropdown-item d-flex align-items-center" href="app-calendar.html"
+                                data-bs-toggle="" data-i18n="Calendar"><i data-feather="file-plus"></i><span
+                                    data-i18n="POs">POs</span></a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown nav-item" data-menu="dropdown"><a
+                        class="dropdown-toggle nav-link d-flex align-items-center" href="javascript:void(0)" data-bs-toggle="dropdown"><i
+                            data-feather="key"></i><span data-i18n="Inventory">Inventory</span></a>
+                    <ul class="dropdown-menu" data-bs-popper="none">
+                        <li data-menu=""><a class="dropdown-item d-flex align-items-center" href="ui-typography.html"
+                                data-bs-toggle="" data-i18n="Typography"><i data-feather="clock"></i><span
+                                    data-i18n="Batchs">Batchs</span></a>
+                        </li>
+                        <li data-menu=""><a class="dropdown-item d-flex align-items-center" href="ui-feather.html"
+                                data-bs-toggle="" data-i18n="Feather"><i data-feather="check-circle"></i><span
+                                    data-i18n="Finished products">Finished products</span></a>
+                        </li>
+                        <li data-menu=""><a class="dropdown-item d-flex align-items-center" href="ui-feather.html"
+                                data-bs-toggle="" data-i18n="Feather"><i data-feather="codesandbox"></i><span
+                                    data-i18n="Raw material">Raw material</span></a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class=" nav-link d-flex align-items-center" href="#"
+                        data-bs-toggle="dropdown"><i data-feather="pie-chart"></i><span
+                            data-i18n="Reports">Reports</span></a>
+                </li>
+                <li class="nav-item"><a class=" nav-link d-flex align-items-center" href="#"
+                        data-bs-toggle="dropdown"><i data-feather="package"></i><span
+                            data-i18n="Products">Products</span></a>
+                </li>
+                <li class="nav-item"><a class=" nav-link d-flex align-items-center" href="#"
+                        data-bs-toggle="dropdown"><i data-feather="refresh-ccw"></i><span
+                            data-i18n="Shifts">Shifts</span></a>
+                </li>
+                <li class="nav-item"><a class=" nav-link d-flex align-items-center" href="#"
+                        data-bs-toggle="dropdown"><i data-feather="edit"></i><span
+                            data-i18n="Suppliers">Suppliers</span></a>
+                </li>
+                <li class="dropdown nav-item" data-menu="dropdown"><a
+                        class="dropdown-toggle nav-link d-flex align-items-center" href="javascript:void(0)" data-bs-toggle="dropdown"><i
+                            data-feather="users"></i><span data-i18n="Workers">Workers</span></a>
+                    <ul class="dropdown-menu" data-bs-popper="none">
+                        <li data-menu=""><a class="dropdown-item d-flex align-items-center" href="page-profile.html"
+                                data-bs-toggle="" data-i18n="Profile"><i data-feather="truck"></i><span
+                                    data-i18n="Drivers">Drivers</span></a>
+                        </li>
+                        <li data-menu=""><a class="dropdown-item d-flex align-items-center" href="page-faq.html"
+                                data-bs-toggle="" data-i18n="FAQ"><i data-feather="user-plus"></i><span
+                                    data-i18n="Workers">Workers</span></a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- END: Main Menu-->
+{% endwith %}

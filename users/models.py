@@ -1,10 +1,9 @@
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin, Group, Permission
 from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.contrib.auth import get_user_model
 from rest_framework.authtoken.models import Token
-
 
 class MyUserManager(BaseUserManager):
     def create_user(self, email, level, password=None):
@@ -31,7 +30,7 @@ class MyUserManager(BaseUserManager):
         return user
 
 
-class User(AbstractBaseUser):
+class User(AbstractBaseUser,PermissionsMixin):
     LEVEL_CHOICES = [
         ('owner', 'Owner'),
         ('supervisor', 'Supervisor'),
@@ -41,7 +40,10 @@ class User(AbstractBaseUser):
     level = models.CharField(max_length=10, choices=LEVEL_CHOICES)
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
-
+    is_staff = models.BooleanField(default=True)
+    name = models.CharField(max_length=255)
+    groups = models.ManyToManyField(Group, blank=True)
+    user_permissions = models.ManyToManyField(Permission, blank=True)
     objects = MyUserManager()
 
     USERNAME_FIELD = 'email'
@@ -52,16 +54,18 @@ class User(AbstractBaseUser):
 
     def has_perm(self, perm, obj=None):
         "Does the user have a specific permission?"
-        return True
+        # Use the has_perm method from PermissionsMixin
+        return super().has_perm(perm, obj)
 
     def has_module_perms(self, app_label):
         "Does the user have permissions to view the app `app_label`?"
-        return True
+        # Use the has_module_perms method from PermissionsMixin
+        return super().has_module_perms(app_label)
 
-    @property
-    def is_staff(self):
-        "Is the user a member of staff?"
-        return self.is_admin
+    # @property
+    # def is_staff(self):
+    #     "Is the user a member of staff?"
+    #     return self.is_admin
 
 
 @receiver(post_save, sender=get_user_model())

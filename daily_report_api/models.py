@@ -8,6 +8,8 @@ from payments.models import SupplierPayment
 from notifications.models import Notification
 from users.models import User
 import logging
+from django.db.models.signals import pre_delete
+from django.db import models, IntegrityError
 
 logger = logging.getLogger(__name__)
 
@@ -77,7 +79,6 @@ class SoldProductRecord(models.Model):
         return f"Sold Product Record: {self.product_type} - {self.weight_sold}"
     
 # Signals
-
 @receiver(post_save, sender=RawMaterialRecord)
 def create_notification(sender, instance, created, **kwargs):
     if created:
@@ -87,7 +88,7 @@ def create_notification(sender, instance, created, **kwargs):
             for owner in owners:
                 notification = Notification.objects.create(
                     user=owner,
-                    title="New Raw Material Record",
+                    title="Raw Material Record needs info",
                     message=f"A new raw material record has been created for supplier {instance.supplier.name}. Please fill in the missing information."
                 )
                 notification_ids.append(str(notification.id))
@@ -98,53 +99,79 @@ def create_notification(sender, instance, created, **kwargs):
 
 @receiver(pre_save, sender=RawMaterialRecord)
 def delete_notifications(sender, instance, **kwargs):
-    """Delete the notifications that were created when a raw material record is updated."""
-    if instance.pk is not None and instance.notification_ids:
-        notification_ids = map(int, instance.notification_ids.split(','))
-        Notification.objects.filter(id__in=notification_ids).delete()
-        instance.notification_ids = None
-        instance.save(update_fields=['notification_ids'])
+    if instance.pk is not None:
+        try:
+            original_instance = RawMaterialRecord.objects.get(pk=instance.pk)
+            if (original_instance.price_per_ton != instance.price_per_ton or original_instance.shipping != instance.shipping) and (instance.price_per_ton != 0 and instance.shipping != 0):
+                if original_instance.notification_ids:
+                    notification_ids = map(int, original_instance.notification_ids.split(','))
+                    Notification.objects.filter(id__in=notification_ids).delete()
+                    instance.notification_ids = None
+        except RawMaterialRecord.DoesNotExist:
+            logger.error("RawMaterialRecord does not exist.")
+        except Exception as e:
+            logger.error(f"Error deleting notifications: {e}")
 
-
-@receiver(post_save, sender=SupplierPayment) #  needs to be updated 
-def update_supplier_totals(sender, instance, created, **kwargs):
-    """Update the supplier's totals when a new payment is made to a supplier."""
-    if created:
+@receiver(pre_save, sender=SupplierPayment)
+def update_supplier_totals(sender, instance, **kwargs):
+    try:
         supplier = instance.supplier
         supplier.total_paid_to_supplier += instance.paid_amount
-        print(f"total paid to supplier{supplier.total_paid_to_supplier}")
-        # when making a payment must make sure that there is enpough pending balance
-        print(f"total pending: {supplier.pending_amount_to_the_supplier} - total paid to supplier {supplier.total_paid_to_supplier} ")
-        supplier.pending_amount_to_the_supplier = supplier.pending_amount_to_the_supplier - instance.paid_amount
-        print(f"total pending after {supplier.pending_amount_to_the_supplier}")
+        supplier.pending_amount_to_the_supplier -= instance.paid_amount
         supplier.save()
+    except IntegrityError:
+        logger.error("Error updating supplier totals. The operation would result in negative values.")
 
+@receiver(pre_delete, sender=SupplierPayment)
+def deduct_payment(sender, instance, **kwargs):
+    try:
+        supplier = instance.supplier
+        if supplier.total_paid_to_supplier - instance.paid_amount >= 0:
+            supplier.total_paid_to_supplier -= instance.paid_amount
+        else:
+            supplier.total_paid_to_supplier = 0
+
+        supplier.pending_amount_to_the_supplier += instance.paid_amount
+        if supplier.pending_amount_to_the_supplier > supplier.total_provided_from_supplier:
+            supplier.pending_amount_to_the_supplier = supplier.total_provided_from_supplier
+
+        supplier.save()
+    except IntegrityError:
+        logger.error("Error deducting payment. The operation would result in negative values.")
 
 @receiver(post_save, sender=RawMaterialRecord)
 def create_supplier_batch(sender, instance, created, **kwargs):
     if created:
-        supplier_batch = SupplierBatch.objects.create(
-            supplier=instance.supplier,
-            material_type=instance.material_type.type_name,
-            weight = instance.weight,
-            price_per_ton=None,
-            shipping=None,
-            total=None
-        )
-        supplier_batch.save()
-
+        try:
+            supplier_batch = SupplierBatch.objects.create(
+                supplier=instance.supplier,
+                material_type=instance.material_type.type_name,
+                weight = instance.weight,
+                shift = instance.daily_report.shift,
+                price_per_ton=None,
+                shipping=None,
+                total=None
+            )
+            supplier_batch.save()
+        except Exception as e:
+           logger.error(f"Error creating supplier batch: {e}")
 
 @receiver(pre_save, sender=SupplierBatch)
 def calculate_total(sender, instance, **kwargs):
     if instance.shipping is not None and instance.price_per_ton is not None:
-        instance.total = instance.shipping + instance.price_per_ton * instance.weight
-
+        try:
+            instance.total = instance.shipping + instance.price_per_ton * instance.weight
+        except Exception as e:
+            logger.error(f"Error calculating total: {e}")
 
 @receiver(post_save, sender=SupplierBatch)
 def calculate_supplier_total(sender, instance, **kwargs):
+    try:
         supplier = instance.supplier
         batches = SupplierBatch.objects.filter(supplier=supplier)
         supplier.total_provided_from_supplier = sum(batch.total for batch in batches if batch.total is not None)
         supplier.shipping_total = sum(batch.shipping for batch in batches if batch.total is not None)
         supplier.pending_amount_to_the_supplier = supplier.total_provided_from_supplier - supplier.total_paid_to_supplier
         supplier.save()
+    except Exception as e:
+        logger.error(f"Error calculating supplier total: {e}")

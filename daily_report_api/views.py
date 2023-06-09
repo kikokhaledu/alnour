@@ -1,13 +1,11 @@
 from rest_framework import viewsets
 from notifications.models import Notification
 from payments.models import SupplierPayment
-
 from products.models import ProductType, material_type
 from suppliers.models import Supplier, SupplierBatch
 from .models import Configuration, MeasurementUnit, DailyReport, ProductionRecord, RawMaterialRecord, SoldProductRecord
 from .serializers import ConfigurationSerializer, MaterialTypeSerializer, MeasurementUnitSerializer, DailyReportSerializer, NotificationSerializer, ProductTypeSerializer, ProductionRecordSerializer, RawMaterialRecordSerializer, SoldProductRecordSerializer, SupplierBatchSerializer, SupplierPaymentSerializer, SupplierSerializer
-from rest_framework.decorators import action
-from rest_framework.response import Response
+
 
 
 class ConfigurationViewSet(viewsets.ModelViewSet):

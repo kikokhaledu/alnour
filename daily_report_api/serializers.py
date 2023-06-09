@@ -78,16 +78,19 @@ class SupplierPaymentSerializer(serializers.ModelSerializer):
         fields = '__all__'
         
     def create(self, validated_data):
-        supplier = validated_data.get('supplier')
-        total_amount = validated_data.get('total_amount')
+        try:
+            supplier = validated_data.get('supplier')
+            total_amount = validated_data.get('total_amount')
 
-        if supplier.pending_amount_to_the_supplier < total_amount:
-            raise serializers.ValidationError(
-                f"Payment amount cannot be greater than the supplier's pending amount. "
-                f"The current pending amount is {supplier.pending_amount_to_the_supplier}."
-            )
+            if supplier.pending_amount_to_the_supplier < total_amount:
+                raise serializers.ValidationError(
+                    f"Payment amount cannot be greater than the supplier's pending amount. "
+                    f"The current pending amount is {supplier.pending_amount_to_the_supplier}."
+                )
 
-        return super().create(validated_data)
+            return super().create(validated_data)
+        except Exception as e:
+            raise serializers.ValidationError(f"Error creating SupplierPayment: {e}")
           
 class DailyReportSerializer(serializers.ModelSerializer):
     production_records = ProductionRecordSerializer(many=True, read_only=True)
